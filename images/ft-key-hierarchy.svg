@@ -40,6 +40,9 @@ text{font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Helvetica,Ar
 .kt-acc{fill:#1E4E8C}
 .kt-gtk{fill:#0A7381}
 .kline{stroke:#56646F;stroke-width:1.5;fill:none}
+.wired-zone{fill:#EAEFF3;stroke:none}
+.halo{paint-order:stroke;stroke:#FFFFFF;stroke-width:5px;stroke-linejoin:round}
+.relay{fill:#FFFFFF;stroke:#15212B;stroke-width:1.5}
 @media (prefers-color-scheme: dark){
 .bg{fill:#141C23;stroke:#29353F;stroke-width:1}
 text{font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;fill:#E2E8ED}
@@ -80,6 +83,9 @@ text{font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Helvetica,Ar
 .kt-acc{fill:#8DB4EE}
 .kt-gtk{fill:#4CC1CD}
 .kline{stroke:#98A5AF;stroke-width:1.5;fill:none}
+.wired-zone{fill:#1C2630;stroke:none}
+.halo{paint-order:stroke;stroke:#141C23;stroke-width:5px;stroke-linejoin:round}
+.relay{fill:#141C23;stroke:#E2E8ED;stroke-width:1.5}
 }</style>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="mk"/></marker>

@@ -12,7 +12,7 @@ A study guide to IEEE 802.11 (Wi-Fi), from Wi-Fi 4 through Wi-Fi 7.
 | Association | Scanning, authentication, association, 802.1X, the 4-way handshake and key hierarchy |
 | Security | WEP → WPA3, SAE, PMF, OWE, transition mode and downgrade attacks |
 | Fast roaming | 802.11r (FT), key hierarchy, over-the-air vs over-the-DS, 802.11k/v |
-| Review | Numbers to memorize and a 26-question self-test |
+| Review | Numbers to memorize and a 28-question self-test |
 
 Diagrams are in [`images/`](images/) as SVGs that follow your light or dark theme.
 

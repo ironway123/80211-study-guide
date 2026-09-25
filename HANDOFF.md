@@ -4,7 +4,7 @@ Notes for whoever edits this repo next, whether a person or an AI agent. Read th
 
 ## What this is
 
-A self-study guide to IEEE 802.11 (Wi-Fi), aimed at certification-style exam prep (Network+, Security+ and CWNA-level). It has seven sections: standards, frequency bands, propagation, association and the 4-way handshake, WPA2/WPA3 security, 802.11r fast roaming, a "numbers to memorize" table, and a 26-question self-test.
+A self-study guide to IEEE 802.11 (Wi-Fi), aimed at certification-style exam prep (Network+, Security+ and CWNA-level). It has seven sections: standards, frequency bands, propagation, association and the 4-way handshake, WPA2/WPA3 security, 802.11r fast roaming, a "numbers to memorize" table, and a 28-question self-test.
 
 The reader is a student. Every section should answer "what will I be asked, and why is it true?" Explain the mechanism; don't just list facts.
 
@@ -14,7 +14,7 @@ The reader is a student. Every section should answer "what will I be asked, and 
 802.11-study-guide.md      ← THE GUIDE. All text edits happen here.
 README.md                  ← Short landing page with a table of sections. Update it when sections change.
 HANDOFF.md                 ← This file.
-images/                    ← 12 SVG diagrams used by the guide. Generated; see below.
+images/                    ← 13 SVG diagrams used by the guide. Generated; see below.
 tools/export_svgs.py       ← Generates every file in images/.
 source/80211-study-guide.html  ← Original HTML version of the guide. Now used only as the
                                  source for 9 of the diagrams.
@@ -25,7 +25,7 @@ source/80211-study-guide.html  ← Original HTML version of the guide. Now used 
 | Content | Edit here |
 |---|---|
 | All prose, tables, callouts, quiz | `802.11-study-guide.md` |
-| `bands-spectrum`, `reflection`, `refraction`, `diffraction`, `scattering`, `absorption`, `four-way-handshake`, `sae-exchange`, `ft-over-the-air` | The matching inline `<svg>` in `source/80211-study-guide.html`, then regenerate |
+| `bands-spectrum`, `reflection`, `refraction`, `diffraction`, `scattering`, `absorption`, `four-way-handshake`, `eap-exchange`, `sae-exchange`, `ft-over-the-air` | The matching inline `<svg>` in `source/80211-study-guide.html`, then regenerate |
 | `channels-2.4ghz`, `key-hierarchy`, `ft-key-hierarchy` | Python drawing code in `tools/export_svgs.py`, then regenerate |
 | Diagram colors, fonts, line styles (all diagrams) | `LIGHT` / `DARK` / `RULES` at the top of `tools/export_svgs.py` |
 
@@ -44,10 +44,10 @@ Edit `802.11-study-guide.md`. Then check:
 
 ### Add a quiz question
 
-Append a `<details>` block at the end of section 7, numbered next in sequence (currently Q26), and copy the existing format exactly:
+Append a `<details>` block at the end of section 7, numbered next in sequence (currently Q28), and copy the existing format exactly:
 
 ```html
-<details><summary><b>Q27.</b> Question text?</summary>
+<details><summary><b>Q29.</b> Question text?</summary>
 
 Answer text.
 </details>
@@ -74,7 +74,7 @@ Needs only Python 3 (standard library). The script:
 - draws the 2.4 GHz channel chart and both key hierarchies in Python (the channel chart is plotted to scale from real center frequencies).
 - wraps each SVG with a shared `<style>` block that holds the light palette plus a `prefers-color-scheme: dark` override, a background card and the arrow/hatch `<defs>`.
 
-To add a diagram, either draw a new `<svg>` inside `<main>` in the HTML (using the existing CSS classes: `ray`, `msg`, `note`, `actor`, `t-muted`, `t-mono`, etc.) and add its name to `names`, or draw it in Python like the key hierarchies. Then reference it from the Markdown with a descriptive alt text: `![what it shows](images/name.svg)`.
+To add a diagram, either draw a new `<svg>` inside `<main>` in the HTML (using the existing CSS classes: `ray`, `msg`, `note`, `actor`, `t-muted`, `t-mono`, `halo` for labels that cross a lifeline, `relay` for a relay dot, etc.) and add its name to `names`, or draw it in Python like the key hierarchies. Then reference it from the Markdown with a descriptive alt text: `![what it shows](images/name.svg)`.
 
 **Checking a diagram locally on macOS:** `qlmanage -t -s 900 -o /tmp images/name.svg` renders a PNG preview. It uses the system theme, so check both light and dark if you changed colors.
 
@@ -114,10 +114,10 @@ These change with regulation or new certifications. Check them before relying on
 | Added §5 "Fast roaming with 802.11r" | Covers the FT key hierarchy, over the air vs. over the DS, and 802.11k/v. Q21–Q25. The old "Roaming shortcuts" list in §3 became a pointer to §5. |
 | Converted to Markdown + SVG | Moved to this repo; diagrams exported to `images/`. |
 | Added SAE Commit/Confirm diagram | §4, WPA3-Personal. `images/sae-exchange.svg`, drawn in the HTML source. Added the frame table, anti-clogging bullet and Q26. |
+| Added 802.1X/EAP exchange diagram | §4, WPA2-Enterprise. `images/eap-exchange.svg` shows a PEAP login between client, AP and RADIUS, with notes on how EAP-TLS differs. Linked from §3 step 4. Added Q27–Q28. New `halo`, `relay` and `wired-zone` style classes, so every SVG's style block changed. |
 
 ## Ideas not yet done
 
-- Diagram of the 802.1X/EAP exchange (supplicant ↔ AP ↔ RADIUS), e.g. EAP-TLS or PEAP.
 - Section on 802.11 frame types (management / control / data) and CSMA/CA, RTS/CTS, hidden node.
 - Section on Wi-Fi 6/7 features in more depth (OFDMA resource units, BSS coloring, MLO modes).
 - Separate answer key or printable flashcards generated from the quiz.

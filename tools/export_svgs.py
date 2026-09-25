@@ -62,6 +62,9 @@ text{font-family:SANSF;fill:INK}
 .kt-acc{fill:ACCENT}
 .kt-gtk{fill:B5}
 .kline{stroke:MUTED;stroke-width:1.5;fill:none}
+.wired-zone{fill:SURFACE2;stroke:none}
+.halo{paint-order:stroke;stroke:SURFACE;stroke-width:5px;stroke-linejoin:round}
+.relay{fill:SURFACE;stroke:INK;stroke-width:1.5}
 """
 
 DEFS = """<defs>
@@ -113,7 +116,7 @@ def aria(attrs, default):
 
 
 names = ["bands-spectrum", "channels-2.4ghz", "reflection", "refraction", "diffraction",
-         "scattering", "absorption", "four-way-handshake", "sae-exchange", "ft-over-the-air"]
+         "scattering", "absorption", "four-way-handshake", "eap-exchange", "sae-exchange", "ft-over-the-air"]
 assert len(svgs) == len(names), len(svgs)
 
 
