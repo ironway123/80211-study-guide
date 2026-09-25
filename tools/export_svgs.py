@@ -113,7 +113,7 @@ def aria(attrs, default):
 
 
 names = ["bands-spectrum", "channels-2.4ghz", "reflection", "refraction", "diffraction",
-         "scattering", "absorption", "four-way-handshake", "ft-over-the-air"]
+         "scattering", "absorption", "four-way-handshake", "sae-exchange", "ft-over-the-air"]
 assert len(svgs) == len(names), len(svgs)
 
 
