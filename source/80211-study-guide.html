@@ -1,0 +1,1134 @@
+<title>802.11 Study Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+:root{
+  --ground:#F4F6F8; --surface:#FFFFFF; --surface-2:#EAEFF3; --ink:#15212B; --muted:#56646F; --line:#D3DBE1;
+  --accent:#1E4E8C; --accent-soft:#E2EBF7;
+  --b24:#B25F08; --b24-soft:#F8EAD8; --b5:#0A7381; --b5-soft:#DAEFF1; --b6:#6947BF; --b6-soft:#ECE6FA;
+  --ok:#2A7A4B; --ok-soft:#DFF0E6; --warn:#A0441A; --warn-soft:#F8E5DA;
+  --display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ground:#0D1318; --surface:#141C23; --surface-2:#1C2630; --ink:#E2E8ED; --muted:#98A5AF; --line:#29353F;
+    --accent:#8DB4EE; --accent-soft:#1A2A3E;
+    --b24:#EDA24E; --b24-soft:#33240F; --b5:#4CC1CD; --b5-soft:#0E2A2E; --b6:#AE95F3; --b6-soft:#251C3D;
+    --ok:#6CCB93; --ok-soft:#13281C; --warn:#EE9467; --warn-soft:#34200F;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#0D1318; --surface:#141C23; --surface-2:#1C2630; --ink:#E2E8ED; --muted:#98A5AF; --line:#29353F;
+  --accent:#8DB4EE; --accent-soft:#1A2A3E;
+  --b24:#EDA24E; --b24-soft:#33240F; --b5:#4CC1CD; --b5-soft:#0E2A2E; --b6:#AE95F3; --b6-soft:#251C3D;
+  --ok:#6CCB93; --ok-soft:#13281C; --warn:#EE9467; --warn-soft:#34200F;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:15.5px;line-height:1.62;padding-inline:20px;padding-block:0 64px}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+code,.mono{font-family:var(--mono);font-size:.88em}
+code{background:var(--surface-2);padding:.08em .35em;border-radius:4px}
+strong{font-weight:600}
+
+.wrap{max-width:1140px;margin:0 auto}
+
+/* Header */
+.masthead{padding-block:40px 28px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,5.4vw,54px);font-weight:800;font-stretch:112%;line-height:1.02;letter-spacing:-.01em}
+.lede{max-width:62ch;color:var(--muted);font-size:17px;margin:14px 0 20px}
+.bands{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:12.5px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface);white-space:nowrap}
+.dot{width:9px;height:9px;border-radius:50%;background:currentColor;flex:none}
+.c24{color:var(--b24)} .c5{color:var(--b5)} .c6{color:var(--b6)}
+.chip .t{color:var(--ink)}
+
+/* Layout */
+.layout{display:grid;grid-template-columns:200px minmax(0,1fr);gap:48px;align-items:start}
+nav.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px);padding-top:28px}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;gap:2px;counter-reset:toc}
+.toc a{display:flex;gap:10px;padding:6px 10px;border-radius:6px;text-decoration:none;color:var(--muted);font-size:14px;line-height:1.35}
+.toc a .n{font-family:var(--mono);font-size:12px;color:var(--muted);min-width:1.4em;padding-top:1px}
+.toc a:hover{background:var(--surface-2);color:var(--ink)}
+.toc a.on{background:var(--accent-soft);color:var(--ink);font-weight:500}
+.toc a.on .n{color:var(--accent)}
+.toc .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 8px 10px}
+main{min-width:0;max-width:780px}
+
+section{padding-top:36px;scroll-margin-top:20px}
+section + section{border-top:1px solid var(--line);margin-top:28px}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:14px}
+.sec-num{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:600}
+h2{font-size:clamp(24px,3.2vw,30px);font-weight:750;font-stretch:108%;line-height:1.15}
+h3{font-size:19px;font-weight:700;font-stretch:104%;margin:30px 0 8px;line-height:1.25}
+h4{font-family:var(--body);font-size:15px;font-weight:600;margin:20px 0 6px}
+p{margin:0 0 12px;max-width:68ch}
+ul.facts{margin:0 0 14px;padding-left:1.15em;max-width:68ch}
+ul.facts li{margin-bottom:6px}
+ul.facts li::marker{color:var(--muted)}
+
+/* Band headings */
+.band-h{display:flex;align-items:center;gap:10px;margin:34px 0 10px}
+.band-h h3{margin:0}
+.band-tag{font-family:var(--mono);font-size:12px;font-weight:600;padding:3px 9px;border-radius:5px}
+.bt24{background:var(--b24-soft);color:var(--b24)}
+.bt5{background:var(--b5-soft);color:var(--b5)}
+.bt6{background:var(--b6-soft);color:var(--b6)}
+
+/* Callouts */
+.callout{border-radius:8px;padding:12px 16px;margin:16px 0;max-width:70ch;font-size:14.5px}
+.callout p:last-child{margin-bottom:0}
+.callout .k{display:block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.tip{background:var(--accent-soft)} .tip .k{color:var(--accent)}
+.trap{background:var(--warn-soft)} .trap .k{color:var(--warn)}
+
+/* Tables */
+.tbl{overflow-x:auto;margin:14px 0 18px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--surface-2);white-space:nowrap}
+td.nw{white-space:nowrap}
+td .mono{white-space:nowrap}
+.pill{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;padding:1px 7px;border-radius:4px;white-space:nowrap}
+.p-bad{background:var(--warn-soft);color:var(--warn)}
+.p-ok{background:var(--ok-soft);color:var(--ok)}
+.p-mid{background:var(--surface-2);color:var(--muted)}
+
+/* Figures */
+figure{margin:16px 0 20px}
+.fig{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 14px 8px;overflow-x:auto}
+.fig svg{display:block;width:100%;height:auto}
+.fig.wide svg{min-width:600px}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;max-width:70ch}
+svg text{font-family:var(--body);fill:var(--ink)}
+svg .t-mono{font-family:var(--mono)}
+svg .t-muted{fill:var(--muted)}
+svg .axis{stroke:var(--muted);stroke-width:1;fill:none}
+svg .grid{stroke:var(--line);stroke-width:1;fill:none}
+svg .ch-main{fill:var(--b24);fill-opacity:.16;stroke:var(--b24);stroke-width:2}
+svg .ch-other{fill:none;stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3;opacity:.75}
+svg .ch-jp{fill:none;stroke:var(--muted);stroke-width:1;stroke-dasharray:1 3;opacity:.6}
+svg .f24{fill:var(--b24)} svg .f5{fill:var(--b5)} svg .f6{fill:var(--b6)}
+svg .t24{fill:var(--b24)} svg .t5{fill:var(--b5)} svg .t6{fill:var(--b6)}
+svg .mk{fill:var(--accent)}
+svg .mk-ink{fill:var(--ink)}
+svg .ray{stroke:var(--accent);stroke-width:2;fill:none;stroke-linecap:round}
+svg .ray.thin{stroke-width:1.3}
+svg .surf{stroke:var(--ink);stroke-width:3;fill:none}
+svg .hatch{stroke:var(--muted);stroke-width:1;fill:none}
+svg .guide{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3;fill:none}
+svg .medium{fill:var(--b5-soft);stroke:none}
+svg .block{fill:var(--muted);fill-opacity:.55;stroke:none}
+svg .block-soft{fill:var(--b5);fill-opacity:.22;stroke:var(--b5);stroke-width:1}
+svg .shadow{fill:var(--muted);fill-opacity:.12;stroke:none}
+svg .wave{stroke:var(--b5);stroke-width:1.5;fill:none}
+svg .particle{fill:var(--ink)}
+svg .lifeline{stroke:var(--line);stroke-width:2;stroke-dasharray:5 4;fill:none}
+svg .actor{fill:var(--surface-2);stroke:var(--line);stroke-width:1}
+svg .msg{stroke:var(--ink);stroke-width:1.8;fill:none}
+svg .note{fill:var(--surface-2);stroke:none}
+svg .pre{fill:var(--accent-soft);stroke:none}
+svg .done{fill:var(--ok-soft);stroke:none}
+svg .msg.wired{stroke:var(--muted);stroke-dasharray:5 4}
+svg .wired-zone{fill:var(--surface-2);stroke:none}
+svg .dfs{fill:url(#dfs-hatch)}
+svg .hatch-line{stroke:var(--surface);stroke-width:1.6}
+
+/* Propagation behaviors */
+.behaviors{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 20px}
+.beh{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px}
+.beh svg{width:100%;max-width:220px;height:auto;display:block;margin-bottom:2px}
+.beh h4{margin:0;font-family:var(--display);font-size:16px;font-weight:700;font-stretch:104%}
+.beh p{margin:0;font-size:14px}
+.beh .ex{font-size:13px;color:var(--muted)}
+
+/* Wavelength strip */
+.wl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0 18px}
+.wl div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.wl .v{font-family:var(--display);font-size:24px;font-weight:750;font-stretch:108%;line-height:1.1;font-variant-numeric:tabular-nums}
+.wl .l{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.wl .bar{height:5px;border-radius:3px;margin-top:8px;background:currentColor}
+
+/* Formula */
+.formula{font-family:var(--mono);font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;overflow-x:auto;white-space:nowrap;margin:10px 0 14px}
+
+/* Steps */
+ol.steps{list-style:none;margin:16px 0 20px;padding:0;display:grid;gap:0;counter-reset:st}
+ol.steps > li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;position:relative;padding-bottom:18px}
+ol.steps > li::before{counter-increment:st;content:counter(st);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--surface);border:1.5px solid var(--accent);color:var(--accent);font-family:var(--mono);font-size:13px;font-weight:600;position:relative;z-index:1}
+ol.steps > li::after{content:"";position:absolute;left:15px;top:30px;bottom:0;width:1.5px;background:var(--line)}
+ol.steps > li:last-child::after{display:none}
+ol.steps li.opt::before{border-style:dashed}
+.step h4{margin:4px 0 4px;font-family:var(--display);font-size:17px;font-weight:700;font-stretch:104%}
+.step p{font-size:14.5px;margin-bottom:6px}
+.frames{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 8px}
+.frame{font-family:var(--mono);font-size:12px;padding:2px 8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);white-space:nowrap}
+.opt-tag{font-family:var(--mono);font-size:11px;color:var(--muted);font-weight:500;margin-left:6px}
+
+/* State machine */
+.states{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:12px 0 18px}
+.state{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:13px;line-height:1.4}
+.state b{display:block;font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:3px}
+.state:last-child{background:var(--ok-soft);border-color:transparent}
+.state:last-child b{color:var(--ok)}
+
+/* Key hierarchy */
+.keys{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:grid;gap:10px;margin:14px 0 20px}
+.krow{display:grid;gap:8px}
+.krow.src{grid-template-columns:repeat(3,minmax(0,1fr))}
+.krow.ptk{grid-template-columns:repeat(3,minmax(0,1fr))}
+.kbox{border-radius:7px;padding:9px 11px;font-size:13px;line-height:1.4;background:var(--surface-2)}
+.kbox b{display:block;font-family:var(--mono);font-size:13px;font-weight:600;margin-bottom:2px}
+.kbox.pmk{background:var(--accent-soft);text-align:center}
+.kbox.pmk b{color:var(--accent);font-size:14px}
+.kbox.ptkh{background:var(--accent-soft);text-align:center}
+.kbox.ptkh b{color:var(--accent)}
+.kbox.gtk{background:var(--b5-soft)}
+.kbox.gtk b{color:var(--b5)}
+.karrow{text-align:center;font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+/* Security timeline */
+.eras{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:14px 0 18px}
+.era{border-radius:8px;padding:10px 12px;border:1px solid var(--line);background:var(--surface);font-size:13px;line-height:1.4}
+.era .y{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.era .nm{font-family:var(--display);font-size:20px;font-weight:750;font-stretch:108%;display:block;margin:2px 0 4px}
+.era.bad .nm{color:var(--warn)} .era.good .nm{color:var(--ok)}
+
+/* Numbers */
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
+.num{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.num .v{font-family:var(--display);font-size:24px;font-weight:780;font-stretch:110%;line-height:1.1;display:block;font-variant-numeric:tabular-nums}
+.num .d{font-size:13px;color:var(--muted);line-height:1.4;display:block;margin-top:4px}
+
+/* Quiz */
+.quiz-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0 14px}
+button{font:inherit;font-size:13.5px;font-weight:500;padding:6px 14px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+button:hover{background:var(--surface-2)}
+.quiz{display:grid;gap:8px}
+details.q{background:var(--surface);border:1px solid var(--line);border-radius:8px}
+details.q summary{cursor:pointer;padding:11px 14px;list-style:none;display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:8px;align-items:baseline;font-weight:500}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary .qn{font-family:var(--mono);font-size:12px;color:var(--muted)}
+details.q summary .rv{font-family:var(--mono);font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+details.q[open] summary .rv{color:var(--muted)}
+details.q .a{padding:0 14px 12px 56px;font-size:14.5px;color:var(--ink)}
+details.q .a p{margin:0}
+details.q[open]{border-color:var(--accent)}
+
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+
+@media (max-width: 900px){
+  .layout{grid-template-columns:minmax(0,1fr);gap:0}
+  nav.toc{top:env(safe-area-inset-top,0px);z-index:5;padding-top:0;margin-inline:-20px;background:var(--ground);border-bottom:1px solid var(--line)}
+  .toc .lbl{display:none}
+  .toc ol{display:flex;overflow-x:auto;gap:4px;padding:8px 16px;scrollbar-width:none}
+  .toc a{white-space:nowrap;font-size:13px;padding:5px 10px}
+  .nums{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .states{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .eras{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width: 560px){
+  body{padding-inline:16px}
+  nav.toc{margin-inline:-16px}
+  .masthead{padding-block:28px 22px}
+  .wl{grid-template-columns:minmax(0,1fr)}
+  .krow.src,.krow.ptk{grid-template-columns:minmax(0,1fr)}
+  details.q .a{padding-left:14px}
+  details.q summary{grid-template-columns:28px minmax(0,1fr)}
+  details.q summary .rv{display:none}
+}
+</style>
+
+<!-- shared SVG defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="mk"/></marker>
+    <marker id="arr-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="mk-ink"/></marker>
+    <pattern id="dfs-hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="5" height="5" class="f5"/>
+      <line x1="0" y1="0" x2="0" y2="5" class="hatch-line"/>
+    </pattern>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <header class="masthead">
+    <p class="eyebrow">IEEE 802.11 · Wireless LAN</p>
+    <h1>802.11 Study Guide</h1>
+    <p class="lede">Frequency bands, how RF moves through a building, what happens between “tap SSID” and “connected”, and how WPA2 and WPA3 protect the link.</p>
+    <div class="bands">
+      <span class="chip c24"><span class="dot"></span><span class="t">2.4 GHz</span></span>
+      <span class="chip c5"><span class="dot"></span><span class="t">5 GHz</span></span>
+      <span class="chip c6"><span class="dot"></span><span class="t">6 GHz</span></span>
+      <span class="chip"><span class="t">Covers Wi-Fi 4 → Wi-Fi 7</span></span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="toc" aria-label="Sections">
+      <p class="lbl">Contents</p>
+      <ol>
+        <li><a href="#standards"><span class="n">0</span>The standards</a></li>
+        <li><a href="#bands"><span class="n">1</span>Frequency bands</a></li>
+        <li><a href="#propagation"><span class="n">2</span>Propagation</a></li>
+        <li><a href="#association"><span class="n">3</span>Association &amp; 4-way handshake</a></li>
+        <li><a href="#security"><span class="n">4</span>Security</a></li>
+        <li><a href="#roaming"><span class="n">5</span>Fast roaming (802.11r)</a></li>
+        <li><a href="#numbers"><span class="n">6</span>Numbers to memorize</a></li>
+        <li><a href="#quiz"><span class="n">7</span>Self-test</a></li>
+      </ol>
+    </nav>
+
+    <main>
+      <!-- ================= 0 STANDARDS ================= -->
+      <section id="standards">
+        <div class="sec-head"><span class="sec-num">00</span><h2>The standards at a glance</h2></div>
+        <p>802.11 is the IEEE standard for wireless LANs. Each letter suffix is an <em>amendment</em> that added a new physical layer or feature; the Wi-Fi Alliance later gave the big ones consumer names (Wi-Fi 4, 5, 6…). Knowing which amendment runs on which band answers a surprising number of exam questions.</p>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>Amendment</th><th>Name</th><th>Year</th><th>Band(s)</th><th>Max rate</th><th>Key technology</th></tr></thead>
+            <tbody>
+              <tr><td class="nw mono">802.11</td><td>—</td><td>1997</td><td><span class="c24">2.4</span></td><td class="nw">2 Mbps</td><td>FHSS / DSSS</td></tr>
+              <tr><td class="nw mono">802.11b</td><td>—</td><td>1999</td><td><span class="c24">2.4</span></td><td class="nw">11 Mbps</td><td>HR-DSSS (CCK)</td></tr>
+              <tr><td class="nw mono">802.11a</td><td>—</td><td>1999</td><td><span class="c5">5</span></td><td class="nw">54 Mbps</td><td>OFDM</td></tr>
+              <tr><td class="nw mono">802.11g</td><td>—</td><td>2003</td><td><span class="c24">2.4</span></td><td class="nw">54 Mbps</td><td>ERP-OFDM (OFDM on 2.4 GHz, backward-compatible with b)</td></tr>
+              <tr><td class="nw mono">802.11n</td><td class="nw">Wi-Fi 4</td><td>2009</td><td class="nw"><span class="c24">2.4</span> / <span class="c5">5</span></td><td class="nw">600 Mbps</td><td>MIMO (up to 4 spatial streams), 40 MHz channels</td></tr>
+              <tr><td class="nw mono">802.11ac</td><td class="nw">Wi-Fi 5</td><td>2013</td><td><span class="c5">5 only</span></td><td class="nw">6.9 Gbps</td><td>256-QAM, 80/160 MHz, downlink MU-MIMO</td></tr>
+              <tr><td class="nw mono">802.11ax</td><td class="nw">Wi-Fi 6 / 6E</td><td>2019</td><td class="nw"><span class="c24">2.4</span> / <span class="c5">5</span> / <span class="c6">6</span>*</td><td class="nw">9.6 Gbps</td><td>OFDMA, 1024-QAM, BSS coloring, Target Wake Time, UL + DL MU-MIMO</td></tr>
+              <tr><td class="nw mono">802.11be</td><td class="nw">Wi-Fi 7</td><td>2024</td><td class="nw"><span class="c24">2.4</span> / <span class="c5">5</span> / <span class="c6">6</span></td><td class="nw">~46 Gbps</td><td>320 MHz channels, 4096-QAM, Multi-Link Operation (MLO)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:13px;color:var(--muted)">* “Wi-Fi 6E” is simply 802.11ax operating in the 6 GHz band. Max rates are theoretical PHY rates, not real-world throughput.</p>
+        <div class="callout trap"><span class="k">Common trap</span><p>802.11ac is <strong>5 GHz only</strong>. A “dual-band AC router” is running 802.11n on its 2.4 GHz radio.</p></div>
+      </section>
+
+      <!-- ================= 1 BANDS ================= -->
+      <section id="bands">
+        <div class="sec-head"><span class="sec-num">01</span><h2>Frequency bands: 2.4, 5 and 6 GHz</h2></div>
+        <p>Wi-Fi uses <strong>unlicensed</strong> spectrum: anyone can transmit without a license, as long as they follow the regulator’s rules on channels and power (the FCC in the US, ETSI in Europe). That’s why available channels differ by country and why APs are configured with a country code.</p>
+
+        <figure>
+          <div class="fig wide">
+            <svg viewBox="0 0 720 132" role="img" aria-label="To-scale spectrum map from 2.3 to 7.2 GHz: the 2.4 GHz band is a narrow 83.5 MHz sliver, 5 GHz U-NII bands span about 580 MHz with a gap, and 6 GHz is a single 1200 MHz block.">
+              <text x="26" y="36" class="t24" font-size="12.5" font-weight="600">2.4 GHz · 83.5 MHz</text>
+              <text x="468" y="36" class="t5" font-size="12.5" font-weight="600" text-anchor="middle">5 GHz · ~580 MHz</text>
+              <text x="606" y="36" class="t6" font-size="12.5" font-weight="600" text-anchor="middle">6 GHz · 1200 MHz</text>
+              <!-- 2.4 -->
+              <rect x="33.9" y="46" width="11.6" height="40" class="f24"/>
+              <!-- 5 GHz: U-NII-1, 2A (DFS), 2C (DFS), 3, 4 -->
+              <rect x="415.5" y="46" width="13.4" height="40" class="f5"/>
+              <rect x="429.4" y="46" width="13.9" height="40" class="dfs"/>
+              <rect x="459.9" y="46" width="35.4" height="40" class="dfs"/>
+              <rect x="495.8" y="46" width="16.9" height="40" class="f5"/>
+              <rect x="513.2" y="46" width="9.4" height="40" class="f5" fill-opacity=".45"/>
+              <!-- 6 GHz: U-NII-5..8 -->
+              <rect x="523.6" y="46" width="68.9" height="40" class="f6"/>
+              <rect x="593" y="46" width="13.4" height="40" class="f6" fill-opacity=".75"/>
+              <rect x="606.9" y="46" width="48.1" height="40" class="f6"/>
+              <rect x="655.5" y="46" width="34.1" height="40" class="f6" fill-opacity=".75"/>
+              <text x="230" y="71" class="t-muted" font-size="12" text-anchor="middle">drawn to scale — 6 GHz alone is ~14× the 2.4 GHz band</text>
+              <!-- axis -->
+              <line x1="20" y1="96" x2="700" y2="96" class="axis"/>
+              <line x1="33.9" y1="96" x2="33.9" y2="101" class="axis"/>
+              <line x1="117.1" y1="96" x2="117.1" y2="101" class="axis"/>
+              <line x1="255.9" y1="96" x2="255.9" y2="101" class="axis"/>
+              <line x1="394.7" y1="96" x2="394.7" y2="101" class="axis"/>
+              <line x1="533.5" y1="96" x2="533.5" y2="101" class="axis"/>
+              <line x1="672.2" y1="96" x2="672.2" y2="101" class="axis"/>
+              <text x="33.9" y="116" class="t-muted t-mono" font-size="11" text-anchor="middle">2.4</text>
+              <text x="117.1" y="116" class="t-muted t-mono" font-size="11" text-anchor="middle">3</text>
+              <text x="255.9" y="116" class="t-muted t-mono" font-size="11" text-anchor="middle">4</text>
+              <text x="394.7" y="116" class="t-muted t-mono" font-size="11" text-anchor="middle">5</text>
+              <text x="533.5" y="116" class="t-muted t-mono" font-size="11" text-anchor="middle">6</text>
+              <text x="672.2" y="116" class="t-muted t-mono" font-size="11" text-anchor="middle">7 GHz</text>
+            </svg>
+          </div>
+          <figcaption>Hatched 5 GHz segments (U-NII-2A and U-NII-2C) require DFS. The faint sliver at the top of 5 GHz is U-NII-4, opened in the US in 2020 with limited device support.</figcaption>
+        </figure>
+
+        <!-- 2.4 -->
+        <div class="band-h"><span class="band-tag bt24">2.4 GHz</span><h3>The long-range, crowded band</h3></div>
+        <ul class="facts">
+          <li><strong>Range:</strong> 2.400–2.4835 GHz, part of the ISM (Industrial, Scientific, Medical) band — shared with microwave ovens, Bluetooth, Zigbee, baby monitors and cordless phones.</li>
+          <li><strong>Channels:</strong> 14 defined, spaced only <strong>5 MHz</strong> apart, but each is ~<strong>20 MHz</strong> wide (22 MHz for legacy DSSS). US uses 1–11; most of the world 1–13; channel 14 is Japan-only and 802.11b-only.</li>
+          <li><strong>Center frequency</strong> = 2407 + 5 × channel (MHz). Channel 1 = 2.412, 6 = 2.437, 11 = 2.462 GHz.</li>
+          <li>Only <strong>three non-overlapping channels: 1, 6 and 11</strong>. 40 MHz channels are effectively unusable here because only one fits.</li>
+          <li><strong>Strengths:</strong> best range and wall penetration; every Wi-Fi device supports it. <strong>Weaknesses:</strong> congestion, non-Wi-Fi interference, low capacity.</li>
+        </ul>
+        <figure>
+          <div class="fig wide">
+            <svg id="ch24" viewBox="0 0 720 214" role="img" aria-label="2.4 GHz channels 1 through 14 drawn as overlapping 22 MHz curves spaced 5 MHz apart; channels 1, 6 and 11 are highlighted and do not overlap each other."></svg>
+          </div>
+          <figcaption>Each curve is one channel’s ~22 MHz footprint. Channels 1, 6 and 11 (solid) sit far enough apart not to overlap; every channel in between overlaps its neighbours. Channel 14 (dotted) is Japan-only.</figcaption>
+        </figure>
+        <div class="callout tip"><span class="k">Exam tip · CCI vs ACI</span><p><strong>Co-channel interference (CCI)</strong> — two APs on the <em>same</em> channel. Devices hear each other and take turns (CSMA/CA), so it costs airtime but stays orderly. <strong>Adjacent-channel interference (ACI)</strong> — APs on <em>overlapping</em> channels (e.g. 1 and 3). They can’t decode each other, so it’s just noise and corrupts frames. ACI is worse, which is why you stick to 1/6/11.</p></div>
+
+        <!-- 5 -->
+        <div class="band-h"><span class="band-tag bt5">5 GHz</span><h3>The workhorse band</h3></div>
+        <p>5 GHz is split into <strong>U-NII</strong> (Unlicensed National Information Infrastructure) sub-bands with different rules. Channel numbers step by 4 for 20 MHz channels, and <strong>center frequency = 5000 + 5 × channel</strong> (MHz), so channel 36 = 5.180 GHz.</p>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>Sub-band</th><th>Frequency (GHz)</th><th>Channels</th><th>Rules</th></tr></thead>
+            <tbody>
+              <tr><td class="nw mono">U-NII-1</td><td class="nw">5.150–5.250</td><td class="nw">36–48</td><td>No DFS. Always available.</td></tr>
+              <tr><td class="nw mono">U-NII-2A</td><td class="nw">5.250–5.350</td><td class="nw">52–64</td><td><span class="pill p-bad">DFS</span> + TPC required</td></tr>
+              <tr><td class="nw mono">U-NII-2C</td><td class="nw">5.470–5.725</td><td class="nw">100–144</td><td><span class="pill p-bad">DFS</span> + TPC required (a.k.a. U-NII-2 Extended)</td></tr>
+              <tr><td class="nw mono">U-NII-3</td><td class="nw">5.725–5.850</td><td class="nw">149–165</td><td>No DFS. Historically allowed higher power.</td></tr>
+              <tr><td class="nw mono">U-NII-4</td><td class="nw">5.850–5.925</td><td class="nw">169–177</td><td>Opened by the FCC in 2020; limited client support.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="facts">
+          <li><strong>25 non-overlapping 20 MHz channels</strong> in the US (U-NII-1 through U-NII-3, counting DFS channels).</li>
+          <li><strong>DFS (Dynamic Frequency Selection):</strong> these frequencies are shared with weather and military radar. Before using a DFS channel an AP must listen for radar for <strong>60 seconds</strong> (Channel Availability Check). If it detects radar it must leave within 10 seconds and avoid that channel for 30 minutes — clients get kicked to a new channel.</li>
+          <li><strong>TPC (Transmit Power Control):</strong> AP reduces power when full power isn’t needed, limiting interference with radar.</li>
+          <li><strong>Channel bonding:</strong> 40, 80 and 160 MHz channels combine adjacent 20 MHz channels for more throughput per client.</li>
+          <li><strong>Tradeoff vs. 2.4:</strong> less range and weaker wall penetration, but far more channels and much less interference.</li>
+        </ul>
+
+        <!-- 6 -->
+        <div class="band-h"><span class="band-tag bt6">6 GHz</span><h3>The clean-slate band (Wi-Fi 6E and 7)</h3></div>
+        <ul class="facts">
+          <li><strong>Range:</strong> 5.925–7.125 GHz — <strong>1200 MHz</strong> of new spectrum in the US (U-NII-5 through U-NII-8). Europe (ETSI) opened only the lower 500 MHz (5.945–6.425 GHz).</li>
+          <li><strong>Greenfield:</strong> only 802.11ax (6E) and 802.11be (Wi-Fi 7) devices can use it. No legacy b/g/n/ac clients means no backward-compatibility overhead slowing the air down.</li>
+          <li><strong>Channels:</strong> numbered 1, 5, 9 … 233; center = 5950 + 5 × channel (MHz). 59 × 20 MHz, 29 × 40, 14 × 80, 7 × 160, and 3 non-overlapping 320 MHz channels (Wi-Fi 7).</li>
+          <li><strong>Discovery:</strong> clients don’t blindly probe all 59 channels. APs advertise their 6 GHz radio in 2.4/5 GHz beacons (<strong>Reduced Neighbor Report</strong>), and clients scan 15 <strong>Preferred Scanning Channels</strong> (PSCs: 5, 21, 37 … every 80 MHz).</li>
+          <li><strong>Power classes:</strong> <em>Low Power Indoor</em> (LPI, no coordination needed), <em>Standard Power</em> (outdoor/higher power, must check an <strong>AFC</strong> — Automated Frequency Coordination — database to protect licensed microwave links), and <em>Very Low Power</em> (portable devices).</li>
+          <li><strong>Security is mandatory:</strong> WPA3 or Enhanced Open (OWE) only, with Protected Management Frames. <strong>No WPA2, no open networks, no WPA2/WPA3 transition mode.</strong></li>
+        </ul>
+
+        <h3>Comparing the three bands</h3>
+        <div class="tbl">
+          <table>
+            <thead><tr><th></th><th><span class="c24">2.4 GHz</span></th><th><span class="c5">5 GHz</span></th><th><span class="c6">6 GHz</span></th></tr></thead>
+            <tbody>
+              <tr><td><strong>Spectrum</strong></td><td>83.5 MHz</td><td>~580 MHz (US)</td><td>1200 MHz (US)</td></tr>
+              <tr><td><strong>Wavelength</strong></td><td>~12.3 cm</td><td>~5.5 cm</td><td>~4.6 cm</td></tr>
+              <tr><td><strong>Range / penetration</strong></td><td>Best</td><td>Medium</td><td>Shortest</td></tr>
+              <tr><td><strong>Congestion</strong></td><td>High</td><td>Moderate</td><td>Low</td></tr>
+              <tr><td><strong>Amendments</strong></td><td>b, g, n, ax, be</td><td>a, n, ac, ax, be</td><td>ax (6E), be</td></tr>
+              <tr><td><strong>Security allowed</strong></td><td>WPA2 or WPA3</td><td>WPA2 or WPA3</td><td>WPA3 / OWE only</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h4>Non-overlapping channels by width</h4>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>Width</th><th><span class="c24">2.4 GHz</span></th><th><span class="c5">5 GHz (US)</span></th><th><span class="c6">6 GHz (US)</span></th></tr></thead>
+            <tbody>
+              <tr><td class="mono">20 MHz</td><td>3</td><td>25</td><td>59</td></tr>
+              <tr><td class="mono">40 MHz</td><td>1 <span style="color:var(--muted)">(avoid)</span></td><td>12</td><td>29</td></tr>
+              <tr><td class="mono">80 MHz</td><td>—</td><td>6</td><td>14</td></tr>
+              <tr><td class="mono">160 MHz</td><td>—</td><td>2</td><td>7</td></tr>
+              <tr><td class="mono">320 MHz</td><td>—</td><td>—</td><td>3 <span style="color:var(--muted)">(Wi-Fi 7)</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout tip"><span class="k">Exam tip</span><p>Wider channels give each client more throughput but leave fewer channels to reuse across APs, which increases co-channel interference. Dense enterprise designs usually run 20 or 40 MHz on 5 GHz; 6 GHz is what makes 80/160 MHz practical at scale.</p></div>
+      </section>
+
+      <!-- ================= 2 PROPAGATION ================= -->
+      <section id="propagation">
+        <div class="sec-head"><span class="sec-num">02</span><h2>How Wi-Fi propagates</h2></div>
+        <p>Wi-Fi is an electromagnetic wave. Its <strong>wavelength</strong> is λ = c ÷ f (speed of light over frequency). Higher frequency means shorter wavelength, more loss through obstacles, and less energy picked up by the receiving antenna at a given distance. That single relationship explains most of the band tradeoffs above.</p>
+        <div class="wl">
+          <div class="c24"><span class="l">2.44 GHz</span><div class="v" style="color:var(--ink)">12.3 cm</div><div class="bar" style="width:100%"></div></div>
+          <div class="c5"><span class="l">5.5 GHz</span><div class="v" style="color:var(--ink)">5.5 cm</div><div class="bar" style="width:45%"></div></div>
+          <div class="c6"><span class="l">6.5 GHz</span><div class="v" style="color:var(--ink)">4.6 cm</div><div class="bar" style="width:37%"></div></div>
+        </div>
+
+        <h3>The five RF behaviours</h3>
+        <div class="behaviors">
+          <div class="beh">
+            <svg viewBox="0 0 160 96" aria-hidden="true">
+              <line x1="80" y1="20" x2="80" y2="80" class="guide"/>
+              <line x1="22" y1="18" x2="78" y2="77" class="ray" marker-end="url(#arr)"/>
+              <line x1="82" y1="77" x2="138" y2="18" class="ray" marker-end="url(#arr)"/>
+              <line x1="12" y1="80" x2="148" y2="80" class="surf"/>
+              <path d="M22 80 l-6 8 M38 80 l-6 8 M54 80 l-6 8 M70 80 l-6 8 M86 80 l-6 8 M102 80 l-6 8 M118 80 l-6 8 M134 80 l-6 8 M148 80 l-6 8" class="hatch"/>
+            </svg>
+            <h4>Reflection</h4>
+            <p>Bounces off a smooth surface much larger than the wavelength. The main cause of multipath indoors.</p>
+            <span class="ex">Metal, glass, mirrors, water, filing cabinets, elevators</span>
+          </div>
+          <div class="beh">
+            <svg viewBox="0 0 160 96" aria-hidden="true">
+              <rect x="0" y="48" width="160" height="48" class="medium"/>
+              <line x1="0" y1="48" x2="160" y2="48" class="hatch"/>
+              <line x1="70" y1="8" x2="70" y2="90" class="guide"/>
+              <polyline points="30,8 70,48 86,88" class="ray" marker-end="url(#arr)"/>
+              <text x="150" y="22" font-size="11" class="t-muted" text-anchor="end">air</text>
+              <text x="150" y="86" font-size="11" class="t-muted" text-anchor="end">denser medium</text>
+            </svg>
+            <h4>Refraction</h4>
+            <p>Bends as it passes between media of different density, changing direction.</p>
+            <span class="ex">Glass, air layers at different temperatures (matters on long outdoor links)</span>
+          </div>
+          <div class="beh">
+            <svg viewBox="0 0 160 96" aria-hidden="true">
+              <path d="M80 34 L160 74 L160 96 L80 96 Z" class="shadow"/>
+              <rect x="62" y="34" width="18" height="62" class="block"/>
+              <line x1="8" y1="20" x2="56" y2="20" class="ray" marker-end="url(#arr)"/>
+              <path d="M91.3 22.7 A16 16 0 0 1 82.8 49.8" class="wave"/>
+              <path d="M101.2 12.8 A30 30 0 0 1 85.2 63.5" class="wave"/>
+              <path d="M111.1 2.9 A44 44 0 0 1 87.6 77.3" class="wave"/>
+              <text x="152" y="90" font-size="11" class="t-muted" text-anchor="end">RF shadow</text>
+            </svg>
+            <h4>Diffraction</h4>
+            <p>Bends around the edge of an obstacle, partially filling the shadow behind it. Longer wavelengths (2.4 GHz) diffract better.</p>
+            <span class="ex">Building corners, pillars, hills</span>
+          </div>
+          <div class="beh">
+            <svg viewBox="0 0 160 96" aria-hidden="true">
+              <line x1="8" y1="48" x2="64" y2="48" class="ray" marker-end="url(#arr)"/>
+              <circle cx="78" cy="42" r="3" class="particle"/>
+              <circle cx="86" cy="53" r="2.5" class="particle"/>
+              <circle cx="75" cy="56" r="2" class="particle"/>
+              <circle cx="90" cy="38" r="2" class="particle"/>
+              <circle cx="84" cy="46" r="2.2" class="particle"/>
+              <line x1="92" y1="36" x2="116" y2="14" class="ray thin" marker-end="url(#arr)"/>
+              <line x1="95" y1="46" x2="138" y2="44" class="ray thin" marker-end="url(#arr)"/>
+              <line x1="92" y1="58" x2="124" y2="80" class="ray thin" marker-end="url(#arr)"/>
+              <line x1="82" y1="62" x2="90" y2="90" class="ray thin" marker-end="url(#arr)"/>
+              <line x1="80" y1="34" x2="74" y2="8" class="ray thin" marker-end="url(#arr)"/>
+              <line x1="72" y1="60" x2="52" y2="82" class="ray thin" marker-end="url(#arr)"/>
+            </svg>
+            <h4>Scattering</h4>
+            <p>Hits many objects about the size of the wavelength or smaller and splits into many weak reflections in all directions.</p>
+            <span class="ex">Chain-link fences, foliage, rough stone, dust, rain</span>
+          </div>
+          <div class="beh">
+            <svg viewBox="0 0 160 96" aria-hidden="true">
+              <rect x="64" y="14" width="40" height="68" rx="3" class="block-soft"/>
+              <line x1="8" y1="48" x2="64" y2="48" class="ray" style="stroke-width:3.5"/>
+              <line x1="64" y1="48" x2="104" y2="48" class="ray" style="stroke-width:2;opacity:.5"/>
+              <line x1="104" y1="48" x2="146" y2="48" class="ray" style="stroke-width:1.2;stroke-dasharray:3 3" marker-end="url(#arr)"/>
+              <text x="84" y="94" font-size="11" class="t-muted" text-anchor="middle">water / people</text>
+            </svg>
+            <h4>Absorption</h4>
+            <p>The material converts RF energy into heat, so less comes out the other side. Higher frequencies are absorbed more.</p>
+            <span class="ex">Human bodies, water, concrete, dense wood, drywall (a little)</span>
+          </div>
+        </div>
+        <p><strong>Attenuation</strong> is the umbrella term for loss of signal strength. Absorption through materials is one source; the spreading of the wave over distance (free space path loss) is the other.</p>
+
+        <h3>Free space path loss (FSPL)</h3>
+        <p>Even with nothing in the way, signal weakens with distance because energy spreads over a growing sphere (the inverse-square law).</p>
+        <div class="formula">FSPL (dB) = 20·log₁₀(d in m) + 20·log₁₀(f in MHz) − 27.55</div>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>Distance</th><th><span class="c24">2.44 GHz</span></th><th><span class="c5">5.5 GHz</span></th><th><span class="c6">6.5 GHz</span></th></tr></thead>
+            <tbody>
+              <tr><td class="mono">1 m</td><td>40.2 dB</td><td>47.3 dB</td><td>48.7 dB</td></tr>
+              <tr><td class="mono">10 m</td><td>60.2 dB</td><td>67.3 dB</td><td>68.7 dB</td></tr>
+              <tr><td class="mono">100 m</td><td>80.2 dB</td><td>87.3 dB</td><td>88.7 dB</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="facts">
+          <li><strong>6 dB rule:</strong> doubling the distance adds ~6 dB of loss (¼ the power). Halving it gains 6 dB.</li>
+          <li>At the same distance, 5 GHz loses ~7 dB more than 2.4 GHz, and 6 GHz ~8.5 dB more — before any walls.</li>
+          <li>Strictly, the frequency term reflects the receiving antenna: a same-type antenna is physically smaller at higher frequency, so it captures less energy.</li>
+        </ul>
+
+        <h3>Multipath</h3>
+        <p>Reflections make copies of the signal arrive at the receiver over different paths, at slightly different times and phases. The time spread between the first and last copy is the <strong>delay spread</strong>.</p>
+        <ul class="facts">
+          <li><strong>In phase</strong> → copies add up (<em>upfade</em>). <strong>Out of phase</strong> → they partially cancel (<em>downfade</em>). <strong>180° out</strong> → near-total cancellation (<em>nulling</em>).</li>
+          <li>Late copies can overlap the next symbol → <strong>inter-symbol interference</strong> and corrupted frames.</li>
+          <li>For older SISO radios (a/b/g), multipath was a problem. <strong>802.11n and later use MIMO to exploit it</strong>: different paths carry independent spatial streams. OFDM’s guard interval absorbs delay spread.</li>
+        </ul>
+
+        <h3>Material attenuation (rough values)</h3>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>Material</th><th>Loss at 2.4 GHz</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>Drywall / plasterboard</td><td class="nw">~3 dB</td><td>Cubicle walls less</td></tr>
+              <tr><td>Clear glass window</td><td class="nw">~3 dB</td><td>Low-E / metallic-tinted glass can exceed 20 dB</td></tr>
+              <tr><td>Wooden door</td><td class="nw">~3–4 dB</td><td></td></tr>
+              <tr><td>Brick wall</td><td class="nw">~6–10 dB</td><td></td></tr>
+              <tr><td>Concrete wall</td><td class="nw">~10–15 dB</td><td>Rebar and thickness push it higher</td></tr>
+              <tr><td>Metal / elevator shaft</td><td class="nw">20+ dB</td><td>Effectively a reflector, not a wall</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:13px;color:var(--muted)">Ballpark figures only — real walls vary widely. Expect several dB more at 5 and 6 GHz.</p>
+
+        <h3>Measuring signal: dB, dBm and SNR</h3>
+        <ul class="facts">
+          <li><strong>dB</strong> is a relative change. Rule of 3s and 10s: <strong>+3 dB = double</strong> the power, −3 dB = half; <strong>+10 dB = ×10</strong>, −10 dB = ÷10.</li>
+          <li><strong>dBm</strong> is absolute power referenced to 1 mW: 0 dBm = 1 mW, 10 dBm = 10 mW, <strong>20 dBm = 100 mW</strong>, 30 dBm = 1 W. Received Wi-Fi signals are tiny, so they’re negative (−65 dBm).</li>
+          <li><strong>dBi</strong> is antenna gain vs. a theoretical isotropic radiator; <strong>dBd</strong> is vs. a dipole. dBi = dBd + 2.14.</li>
+          <li><strong>SNR</strong> = signal − noise floor. −65 dBm signal over a −95 dBm noise floor = 30 dB SNR. Aim for 25 dB+ for voice; below ~10 dB the link barely works.</li>
+          <li><strong>EIRP</strong> (what actually leaves the antenna) = transmit power − cable loss + antenna gain. Example: 20 dBm − 2 dB + 6 dBi = 24 dBm (~250 mW).</li>
+        </ul>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>Received signal (RSSI)</th><th>What it means</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">−30 dBm</td><td>Excellent — you’re next to the AP</td></tr>
+              <tr><td class="mono">−67 dBm</td><td><strong>Design target</strong> for voice, video and enterprise coverage</td></tr>
+              <tr><td class="mono">−70 dBm</td><td>Reliable for web and email</td></tr>
+              <tr><td class="mono">−80 dBm</td><td>Connects, but slow and unreliable</td></tr>
+              <tr><td class="mono">−90 dBm</td><td>At the noise floor — unusable</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Antennas and line of sight</h3>
+        <ul class="facts">
+          <li><strong>Omnidirectional</strong> (dipole): 360° horizontal “donut” pattern. Higher-gain omnis flatten the donut — more reach sideways, less coverage directly below.</li>
+          <li><strong>Semi-directional</strong> (patch, panel, Yagi): aim coverage down a hallway or across a courtyard.</li>
+          <li><strong>Highly directional</strong> (parabolic dish, grid): point-to-point building links.</li>
+          <li>Gain doesn’t create power; it <em>focuses</em> it in one direction at the expense of others.</li>
+          <li><strong>Fresnel zone:</strong> the football-shaped area around a point-to-point link’s straight line. Keep at least <strong>60% of the first Fresnel zone clear</strong> (no more than 40% blocked). Visual line of sight ≠ RF line of sight.</li>
+        </ul>
+      </section>
+
+      <!-- ================= 3 ASSOCIATION ================= -->
+      <section id="association">
+        <div class="sec-head"><span class="sec-num">03</span><h2>Associating to an access point</h2></div>
+        <p>Joining a secured Wi-Fi network happens in stages. The first three are unencrypted management frames that anyone nearby can see. Real authentication and key creation happen afterwards, in 802.1X/EAP (enterprise) and the 4-way handshake.</p>
+
+        <ol class="steps">
+          <li><div class="step">
+            <h4>Discovery (scanning)</h4>
+            <div class="frames"><span class="frame">Beacon</span><span class="frame">Probe Request</span><span class="frame">Probe Response</span></div>
+            <p><strong>Passive:</strong> the client listens on each channel for Beacons, which APs send every <strong>102.4 ms</strong> by default (100 TU). <strong>Active:</strong> the client sends a Probe Request (for a named SSID or a wildcard) and APs reply with Probe Responses.</p>
+            <p>Beacons and probe responses advertise SSID, BSSID (the AP radio’s MAC address), supported rates and capabilities, and the <strong>RSN Information Element (RSNE)</strong> that lists the ciphers and authentication methods (PSK, SAE, 802.1X) the network accepts.</p>
+          </div></li>
+          <li><div class="step">
+            <h4>802.11 authentication</h4>
+            <div class="frames"><span class="frame">Authentication (req)</span><span class="frame">Authentication (resp)</span></div>
+            <p>For WPA2 this is <strong>Open System</strong> authentication: a two-frame formality that verifies nothing. (WEP’s “Shared Key” auth here is obsolete.) <strong>WPA3-Personal is the exception:</strong> the <strong>SAE Commit and Confirm</strong> exchange happens in these Authentication frames, and this is where the password is actually checked.</p>
+          </div></li>
+          <li><div class="step">
+            <h4>Association</h4>
+            <div class="frames"><span class="frame">Association Request</span><span class="frame">Association Response</span></div>
+            <p>The client states its capabilities and picks a cipher and auth method (its own RSNE). The AP replies with a status code and an <strong>Association ID (AID)</strong>. Roaming to another AP in the same network uses <em>Reassociation</em> Request/Response instead.</p>
+          </div></li>
+          <li class="opt"><div class="step">
+            <h4>802.1X / EAP <span class="opt-tag">enterprise only</span></h4>
+            <div class="frames"><span class="frame">EAPOL-Start</span><span class="frame">EAP-Request/Identity</span><span class="frame">…EAP method…</span><span class="frame">EAP-Success</span></div>
+            <p>The AP (<em>authenticator</em>) relays EAP between the client (<em>supplicant</em>) and a RADIUS server (<em>authentication server</em>). When it succeeds, client and server both hold a <strong>Master Session Key (MSK)</strong>; the server hands it to the AP in the RADIUS Access-Accept. The first 256 bits become the PMK.</p>
+          </div></li>
+          <li><div class="step">
+            <h4>4-way handshake</h4>
+            <div class="frames"><span class="frame">EAPOL-Key M1</span><span class="frame">M2</span><span class="frame">M3</span><span class="frame">M4</span></div>
+            <p>Proves both sides hold the same PMK — without sending it — and derives fresh encryption keys for this session. Detailed below.</p>
+          </div></li>
+          <li><div class="step">
+            <h4>Encrypted data</h4>
+            <p>The 802.1X “controlled port” opens. Unicast frames are encrypted with the <strong>TK</strong>, broadcast/multicast with the <strong>GTK</strong>. Until now, the only data frames allowed were EAPOL.</p>
+          </div></li>
+        </ol>
+
+        <h4>The 802.11 state machine</h4>
+        <div class="states">
+          <div class="state"><b>State 1</b>Unauthenticated, unassociated</div>
+          <div class="state"><b>State 2</b>Authenticated, unassociated</div>
+          <div class="state"><b>State 3</b>Associated — only EAPOL allowed while keys are pending</div>
+          <div class="state"><b>State 4</b>Keys established (RSNA) — port open</div>
+        </div>
+
+        <h3>Where the PMK comes from</h3>
+        <p>Everything in the 4-way handshake starts from the <strong>Pairwise Master Key (PMK)</strong>, which both sides already have before the handshake starts. How they got it depends on the security mode:</p>
+        <div class="keys" role="group" aria-label="Key hierarchy">
+          <div class="krow src">
+            <div class="kbox"><b>WPA2-Personal</b>PBKDF2(passphrase, SSID, 4096 iterations) → 256 bits. Same for every client on that SSID.</div>
+            <div class="kbox"><b>WPA3-Personal</b>Output of the SAE exchange. Unique per session.</div>
+            <div class="kbox"><b>Enterprise (802.1X)</b>First 256 bits of the MSK from EAP. Unique per user and session.</div>
+          </div>
+          <div class="karrow">↓</div>
+          <div class="kbox pmk"><b>PMK · 256 bits</b>Never transmitted over the air</div>
+          <div class="karrow">↓ PRF(PMK, ANonce, SNonce, AP MAC, client MAC)</div>
+          <div class="kbox ptkh"><b>PTK · Pairwise Transient Key</b>Fresh for every session; split into three keys (384 bits total with CCMP)</div>
+          <div class="krow ptk">
+            <div class="kbox"><b>KCK</b>Key Confirmation Key — computes the <strong>MIC</strong> on EAPOL-Key frames</div>
+            <div class="kbox"><b>KEK</b>Key Encryption Key — encrypts the <strong>GTK</strong> in message 3</div>
+            <div class="kbox"><b>TK</b>Temporal Key — encrypts <strong>unicast data</strong></div>
+          </div>
+          <div class="kbox gtk"><b>GTK · Group Temporal Key</b>Created by the AP (from its GMK) and shared by all clients to encrypt broadcast/multicast. Delivered in M3; rotated later with the 2-message Group Key Handshake.</div>
+        </div>
+
+        <h3>The 4-way handshake, message by message</h3>
+        <figure>
+          <div class="fig wide">
+            <svg viewBox="0 0 720 524" role="img" aria-label="Sequence diagram of the 4-way handshake between the client and access point.">
+              <rect x="40" y="10" width="180" height="44" rx="6" class="actor"/>
+              <text x="130" y="30" text-anchor="middle" font-size="14" font-weight="600">Client</text>
+              <text x="130" y="46" text-anchor="middle" font-size="11.5" class="t-muted">Supplicant</text>
+              <rect x="500" y="10" width="180" height="44" rx="6" class="actor"/>
+              <text x="590" y="30" text-anchor="middle" font-size="14" font-weight="600">Access point</text>
+              <text x="590" y="46" text-anchor="middle" font-size="11.5" class="t-muted">Authenticator</text>
+              <line x1="130" y1="54" x2="130" y2="484" class="lifeline"/>
+              <line x1="590" y1="54" x2="590" y2="484" class="lifeline"/>
+
+              <rect x="60" y="72" width="600" height="34" rx="6" class="pre"/>
+              <text x="360" y="94" text-anchor="middle" font-size="12.5">Both already hold the <tspan font-weight="600">PMK</tspan> — it is never sent over the air</text>
+
+              <!-- M1 -->
+              <text x="360" y="140" text-anchor="middle" font-size="13" class="t-mono" font-weight="600">M1 · ANonce</text>
+              <line x1="588" y1="150" x2="134" y2="150" class="msg" marker-end="url(#arr-ink)"/>
+              <rect x="140" y="162" width="290" height="44" rx="5" class="note"/>
+              <text x="152" y="180" font-size="12" class="t-muted">Generates its own SNonce</text>
+              <text x="152" y="197" font-size="12" class="t-muted">Derives <tspan font-weight="600" class="t-mono" style="fill:var(--ink)">PTK</tspan> — it now has PMK, both nonces, both MACs</text>
+
+              <!-- M2 -->
+              <text x="360" y="234" text-anchor="middle" font-size="13" class="t-mono" font-weight="600">M2 · SNonce + MIC + client RSNE</text>
+              <line x1="132" y1="244" x2="586" y2="244" class="msg" marker-end="url(#arr-ink)"/>
+              <rect x="290" y="256" width="290" height="44" rx="5" class="note"/>
+              <text x="568" y="274" font-size="12" class="t-muted" text-anchor="end">Derives the same <tspan font-weight="600" class="t-mono" style="fill:var(--ink)">PTK</tspan></text>
+              <text x="568" y="291" font-size="12" class="t-muted" text-anchor="end">MIC checks out → client knows the PMK</text>
+
+              <!-- M3 -->
+              <text x="360" y="320" text-anchor="middle" font-size="13" class="t-mono" font-weight="600">M3 · ANonce + MIC + AP RSNE</text>
+              <text x="360" y="336" text-anchor="middle" font-size="12" class="t-mono t-muted">+ GTK (encrypted with KEK) · “install” flag</text>
+              <line x1="588" y1="346" x2="134" y2="346" class="msg" marker-end="url(#arr-ink)"/>
+              <rect x="140" y="358" width="290" height="44" rx="5" class="note"/>
+              <text x="152" y="376" font-size="12" class="t-muted">MIC checks out → AP knows the PMK</text>
+              <text x="152" y="393" font-size="12" class="t-muted">RSNE matches beacon (no downgrade) · installs keys</text>
+
+              <!-- M4 -->
+              <text x="360" y="428" text-anchor="middle" font-size="13" class="t-mono" font-weight="600">M4 · ACK + MIC</text>
+              <line x1="132" y1="438" x2="586" y2="438" class="msg" marker-end="url(#arr-ink)"/>
+              <rect x="400" y="448" width="180" height="28" rx="5" class="note"/>
+              <text x="568" y="467" font-size="12" class="t-muted" text-anchor="end">Installs PTK</text>
+
+              <rect x="60" y="484" width="600" height="34" rx="6" class="done"/>
+              <text x="360" y="506" text-anchor="middle" font-size="12.5">Port unblocked — unicast encrypted with <tspan font-weight="600">TK</tspan>, broadcast with <tspan font-weight="600">GTK</tspan></text>
+            </svg>
+          </div>
+          <figcaption>Nonces are random numbers used once; ANonce comes from the Authenticator, SNonce from the Supplicant. Every message after M1 carries a MIC computed with the KCK, so tampering or a wrong key is detected.</figcaption>
+        </figure>
+
+        <div class="tbl">
+          <table>
+            <thead><tr><th>Msg</th><th>Direction</th><th>Carries</th><th>Why</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">M1</td><td class="nw">AP → Client</td><td>ANonce, replay counter</td><td>Gives the client the last piece it needs to derive the PTK. No MIC yet — there’s no key to make one with.</td></tr>
+              <tr><td class="mono">M2</td><td class="nw">Client → AP</td><td>SNonce, MIC, client’s RSNE</td><td>AP can now derive the PTK. A valid MIC proves the client has the right PMK (i.e. the right password or EAP result).</td></tr>
+              <tr><td class="mono">M3</td><td class="nw">AP → Client</td><td>ANonce, MIC, AP’s RSNE, encrypted GTK</td><td>Proves the AP has the PMK too (mutual auth), delivers the group key, and lets the client check that security settings weren’t downgraded.</td></tr>
+              <tr><td class="mono">M4</td><td class="nw">Client → AP</td><td>MIC</td><td>Acknowledges. Both sides install keys and encrypted traffic begins.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="formula">PTK = PRF(PMK, "Pairwise key expansion", Min(AA,SPA) ‖ Max(AA,SPA) ‖ Min(ANonce,SNonce) ‖ Max(ANonce,SNonce))</div>
+        <p style="font-size:13px;color:var(--muted);margin-top:-6px">AA = Authenticator (AP) MAC address · SPA = Supplicant (client) MAC address</p>
+
+        <div class="callout tip"><span class="k">Why it matters</span><p>Because the nonces are fresh every time, each session gets a new PTK even though the PMK stays the same. But M1 and M2 also hold everything an attacker needs to test WPA2-Personal password guesses offline — see the next section.</p></div>
+
+        <h3>Roaming shortcuts</h3>
+        <p>Running this whole sequence, including full 802.1X, every time a client moves to another AP can take hundreds of milliseconds — enough to drop a call. PMK caching, OKC and 802.11r Fast BSS Transition shorten it. See <a href="#roaming">Fast roaming (802.11r)</a>.</p>
+      </section>
+
+      <!-- ================= 4 SECURITY ================= -->
+      <section id="security">
+        <div class="sec-head"><span class="sec-num">04</span><h2>Security: WPA2 and WPA3</h2></div>
+        <div class="eras">
+          <div class="era bad"><span class="y">1997</span><span class="nm">WEP</span>RC4 with a 24-bit IV. Broken; crackable in minutes.</div>
+          <div class="era bad"><span class="y">2003</span><span class="nm">WPA</span>TKIP stopgap to run on WEP hardware. Deprecated.</div>
+          <div class="era"><span class="y">2004</span><span class="nm">WPA2</span>802.11i, AES-CCMP. Mandatory for Wi-Fi certification since 2006.</div>
+          <div class="era good"><span class="y">2018</span><span class="nm">WPA3</span>SAE, mandatory PMF, 192-bit enterprise mode.</div>
+        </div>
+
+        <div class="tbl">
+          <table>
+            <thead><tr><th></th><th>WEP</th><th>WPA</th><th>WPA2</th><th>WPA3</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Encryption</strong></td><td>RC4</td><td>RC4 via TKIP</td><td>AES-CCMP (128-bit)</td><td>AES-CCMP-128; GCMP-256 in 192-bit mode</td></tr>
+              <tr><td><strong>Integrity</strong></td><td>CRC-32</td><td>Michael MIC</td><td>CBC-MAC (in CCMP)</td><td>CBC-MAC / GMAC</td></tr>
+              <tr><td><strong>Personal auth</strong></td><td>Shared key</td><td>PSK</td><td>PSK</td><td>SAE</td></tr>
+              <tr><td><strong>Enterprise auth</strong></td><td>—</td><td>802.1X/EAP</td><td>802.1X/EAP</td><td>802.1X/EAP (+ 192-bit)</td></tr>
+              <tr><td><strong>Forward secrecy</strong></td><td>No</td><td>No</td><td>No</td><td>Yes (SAE)</td></tr>
+              <tr><td><strong>PMF (802.11w)</strong></td><td>No</td><td>No</td><td>Optional</td><td>Required</td></tr>
+              <tr><td><strong>Verdict</strong></td><td><span class="pill p-bad">Broken</span></td><td><span class="pill p-bad">Deprecated</span></td><td><span class="pill p-mid">OK, strong passphrase</span></td><td><span class="pill p-ok">Use this</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>WPA2</h3>
+        <h4>WPA2-Personal (PSK)</h4>
+        <ul class="facts">
+          <li>One passphrase for everyone: <strong>8–63 ASCII characters</strong> (or 64 hex digits). The PMK is derived with PBKDF2 using the SSID as salt and 4096 iterations.</li>
+          <li>Encryption is <strong>AES-CCMP</strong>: AES in Counter mode for confidentiality plus CBC-MAC for integrity.</li>
+        </ul>
+        <h4>WPA2-Enterprise (802.1X/EAP)</h4>
+        <p>Each user or device has its own credentials, checked by a RADIUS server, so every client ends up with a unique PMK and you can revoke one user without changing a shared password.</p>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>EAP method</th><th>Client proves itself with</th><th>Server cert</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="nw mono">EAP-TLS</td><td>Client certificate</td><td>Yes</td><td>Strongest; requires PKI to issue client certs. Required for WPA3 192-bit.</td></tr>
+              <tr><td class="nw mono">PEAP</td><td>Username + password (MSCHAPv2 inside a TLS tunnel)</td><td>Yes</td><td>Most common; only the server needs a certificate.</td></tr>
+              <tr><td class="nw mono">EAP-TTLS</td><td>Username + password (various inner methods)</td><td>Yes</td><td>Like PEAP, more flexible inner auth.</td></tr>
+              <tr><td class="nw mono">EAP-FAST</td><td>PAC (Protected Access Credential)</td><td>Optional</td><td>Cisco-developed alternative to certificates.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout trap"><span class="k">Common trap</span><p>With PEAP/TTLS, clients <strong>must validate the server certificate</strong>. If they don’t, an evil-twin AP with its own RADIUS server can collect usernames and password hashes.</p></div>
+
+        <h4>WPA2 weaknesses</h4>
+        <ul class="facts">
+          <li><strong>Offline dictionary attack:</strong> capture M1 + M2 of a handshake (or just the PMKID in M1, no client needed) and test password guesses offline at GPU speed. Defence: long random passphrases (20+ characters), or move to WPA3/Enterprise.</li>
+          <li><strong>No forward secrecy:</strong> anyone who knows the passphrase and captured a handshake can decrypt that session’s traffic, even later.</li>
+          <li><strong>KRACK (2017):</strong> replaying M3 made clients reinstall an in-use key and reuse nonces. Fixed by patches, not a protocol change — keep firmware updated.</li>
+          <li><strong>Unprotected management frames</strong> unless PMF is enabled: attackers can spoof deauthentication frames to kick clients off (and capture a fresh handshake when they reconnect).</li>
+        </ul>
+
+        <h3>WPA3</h3>
+        <h4>WPA3-Personal: SAE</h4>
+        <p><strong>Simultaneous Authentication of Equals</strong> (the “Dragonfly” key exchange) replaces the PSK. It’s a password-authenticated key exchange: both sides prove they know the password without revealing anything an eavesdropper can use, and together they produce a fresh PMK. The normal 4-way handshake then runs on top.</p>
+        <ul class="facts">
+          <li><strong>Resists offline dictionary attacks:</strong> captured frames are useless for guessing. Every guess needs a live exchange with the AP, which can rate-limit.</li>
+          <li><strong>Forward secrecy:</strong> learning the password later doesn’t decrypt previously captured traffic.</li>
+          <li><strong>Dragonblood (2019)</strong> found side-channel and downgrade flaws; the fix is <strong>Hash-to-Element (H2E)</strong>, which is required on 6 GHz.</li>
+        </ul>
+        <h4>WPA3-Enterprise</h4>
+        <ul class="facts">
+          <li>Same 802.1X/EAP model as WPA2-Enterprise, but with PMF required and server certificate validation expected.</li>
+          <li><strong>192-bit mode</strong> (CNSA suite) for government/high-security: GCMP-256 encryption, HMAC-SHA-384, ECDH/ECDSA on P-384, EAP-TLS.</li>
+        </ul>
+        <h4>Also part of the WPA3 era</h4>
+        <ul class="facts">
+          <li><strong>PMF (802.11w, Protected Management Frames):</strong> mandatory. Deauth and disassociation frames are integrity-protected, so they can’t be spoofed.</li>
+          <li><strong>Transition mode:</strong> WPA2-PSK and WPA3-SAE on the same SSID for mixed clients. Convenient, but an attacker can lure WPA3-capable clients down to WPA2. <em>Transition Disable</em> tells clients to stop accepting WPA2 once they’ve seen WPA3 for that network. Not allowed on 6 GHz. See <a href="#wpa-choice">how a client chooses</a> below.</li>
+          <li><strong>Wi-Fi Enhanced Open (OWE):</strong> encryption for password-less networks (cafés, guest Wi-Fi) using a Diffie-Hellman exchange during association. Stops passive sniffing, but <em>does not authenticate the AP</em> — evil twins still work.</li>
+          <li><strong>Wi-Fi Easy Connect (DPP):</strong> onboard headless/IoT devices by scanning a QR code instead of typing a password.</li>
+          <li><strong>Wi-Fi 7</strong> adds a new SAE variant (SAE-EXT-KEY) and GCMP-256 for multi-link operation.</li>
+        </ul>
+
+        <h3 id="wpa-choice" style="scroll-margin-top:60px">How a client chooses WPA2 vs WPA3</h3>
+        <p>There’s no algorithm that keeps switching a client between WPA2 and WPA3. The choice is made <strong>once per association</strong>: the AP advertises what it supports, and the client picks.</p>
+        <ol class="steps">
+          <li><div class="step">
+            <h4>AP advertises its options</h4>
+            <div class="frames"><span class="frame">Beacon</span><span class="frame">Probe Response</span><span class="frame">RSNE</span></div>
+            <p>The RSN Information Element lists the <strong>AKMs</strong> (authentication and key management suites) the network accepts, plus two PMF flags: <em>capable</em> (MFPC) and <em>required</em> (MFPR).</p>
+          </div></li>
+          <li><div class="step">
+            <h4>Client picks</h4>
+            <p>It compares that list with its saved profile for the SSID (security type + credential) and chooses the strongest AKM both support, so SAE is chosen over PSK.</p>
+          </div></li>
+          <li><div class="step">
+            <h4>Client states its choice</h4>
+            <div class="frames"><span class="frame">Authentication (SAE)</span><span class="frame">Association Request · RSNE</span></div>
+            <p>For WPA3 it runs SAE in the Authentication frames, then names the chosen AKM and cipher in its own RSNE in the Association Request.</p>
+          </div></li>
+        </ol>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>AKM</th><th>Meaning</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">2</td><td>PSK — WPA2-Personal</td></tr>
+              <tr><td class="mono">8</td><td>SAE — WPA3-Personal</td></tr>
+              <tr><td class="mono">1 / 5</td><td>802.1X — Enterprise (5 = SHA-256 variant)</td></tr>
+              <tr><td class="mono">4 / 9</td><td>FT-PSK / FT-SAE — the fast-roaming (802.11r) versions</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4>Transition mode: where the choice matters</h4>
+        <p>A transition-mode SSID advertises <strong>both AKM 2 (PSK) and AKM 8 (SAE)</strong>, with PMF capable but not required. Each client decides on its own:</p>
+        <ul class="facts">
+          <li>A WPA3-capable phone sees SAE and uses it, with PMF.</li>
+          <li>An older laptop only understands PSK and connects with WPA2.</li>
+        </ul>
+        <p>Both use the same SSID and password. It can look like the network is “switching” security, but it’s really each client choosing separately.</p>
+        <div class="callout trap"><span class="k">Downgrade attack</span><p>Because the client picks from whatever the AP advertises, an attacker can run a fake AP with the same SSID that offers <strong>only WPA2</strong>. A transition-mode client connects with PSK and sends M2, which is enough to crack the password offline. This is the downgrade part of Dragonblood (2019).</p></div>
+        <h4>Downgrade protections</h4>
+        <ul class="facts">
+          <li><strong>RSNE check in M3:</strong> the AP repeats its RSNE in message 3 and the client compares it with the beacon. This catches a tampered beacon from the real AP, but not a fake AP, which never gets as far as a valid M3.</li>
+          <li><strong>Transition Disable:</strong> once a client connects with WPA3, the real AP tells it in M3 to stop accepting WPA2 for that network. The client updates its saved profile, so a later WPA2-only fake AP is refused.</li>
+        </ul>
+        <h4>Other things that affect the choice</h4>
+        <ul class="facts">
+          <li><strong>Operating systems</strong> mostly key a saved network on SSID + security type. Most current OSes upgrade a saved WPA2 network to WPA3 when the AP offers both, and some warn about “weak security” on WPA2-only networks.</li>
+          <li><strong>Roaming</strong> normally keeps the same AKM. Fast roaming (802.11r) needs matching kinds on both APs (FT-SAE to FT-SAE, FT-PSK to FT-PSK). Mixed setups can force a full re-authentication or a quiet fallback to WPA2.</li>
+          <li><strong>6 GHz has no choice:</strong> transition mode isn’t allowed there. A common setup is transition mode on 2.4/5 GHz and WPA3-only on 6 GHz for the same SSID.</li>
+        </ul>
+
+        <h3>Beyond encryption</h3>
+        <ul class="facts">
+          <li><strong>Disable WPS.</strong> The 8-digit PIN method can be brute-forced in hours because it’s checked in two halves.</li>
+          <li><strong>Hidden SSIDs and MAC filtering are not security.</strong> The SSID still appears in probe and association frames, and MAC addresses are sent in clear text and trivially spoofed.</li>
+          <li><strong>Segment:</strong> put guest and IoT networks on separate VLANs with client isolation.</li>
+          <li><strong>Monitor:</strong> a WIPS (wireless intrusion prevention system) detects rogue APs, evil twins and deauth floods.</li>
+          <li><strong>Patch:</strong> KRACK, FragAttacks (2021) and Dragonblood were all fixed in firmware.</li>
+        </ul>
+      </section>
+
+      <!-- ================= 5 ROAMING ================= -->
+      <section id="roaming">
+        <div class="sec-head"><span class="sec-num">05</span><h2>Fast roaming with 802.11r</h2></div>
+        <p>A <strong>roam</strong> is a client moving its connection from one AP to another in the same network (same SSID, same ESS). The <strong>client alone decides when to roam</strong>, usually when the current AP’s signal or SNR drops below its threshold. The network can only suggest a move or kick the client off.</p>
+        <p>The problem is time. Voice and video want the whole roam done in roughly <strong>50 ms or less</strong>. A full WPA2/WPA3-Enterprise roam repeats everything from section 3: 802.11 authentication, reassociation, a full EAP exchange with the RADIUS server (several round trips, possibly to another site), then the 4-way handshake. That can take hundreds of milliseconds, and the call drops audio in the meantime.</p>
+
+        <h3>Roaming methods compared</h3>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>Method</th><th>What it skips</th><th>Still needed after reassociation</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="nw"><strong>Full re-authentication</strong></td><td>Nothing</td><td>EAP + 4-way handshake</td><td>Slowest; every roam goes back to RADIUS.</td></tr>
+              <tr><td class="nw"><strong>PMK caching</strong></td><td>EAP, but only on APs the client has used before</td><td>4-way handshake</td><td>Part of 802.11i. Doesn’t help on the first visit to an AP.</td></tr>
+              <tr><td class="nw"><strong>OKC</strong><br><span style="font-size:12px;color:var(--muted)">Opportunistic Key Caching</span></td><td>EAP on any AP that shares the cache (usually via a controller)</td><td>4-way handshake</td><td>Widely supported, but a vendor extension, not part of 802.11.</td></tr>
+              <tr><td class="nw"><strong>802.11r (FT)</strong><br><span style="font-size:12px;color:var(--muted)">Fast BSS Transition</span></td><td>EAP <em>and</em> the separate 4-way handshake</td><td>Nothing: keys are ready when reassociation completes</td><td>IEEE standard (2008). The whole roam is <strong>4 frames</strong>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>The FT key hierarchy</h3>
+        <p>Normal WPA2/WPA3 has one PMK per client. 802.11r splits it into levels so a key can be <em>derived</em> for each AP instead of re-running EAP. The APs that share this hierarchy form a <strong>mobility domain</strong>, identified by a <strong>Mobility Domain ID (MDID)</strong> that APs advertise in the Mobility Domain Element (MDE) of their beacons.</p>
+        <div class="keys" role="group" aria-label="802.11r key hierarchy">
+          <div class="krow src">
+            <div class="kbox"><b>FT-802.1X</b>XXKey = second 256 bits of the MSK from EAP</div>
+            <div class="kbox"><b>FT-PSK</b>XXKey = the PSK (from the passphrase)</div>
+            <div class="kbox"><b>FT-SAE</b>XXKey = the PMK from the SAE exchange</div>
+          </div>
+          <div class="karrow">↓ KDF(XXKey, SSID, MDID, R0KH-ID, client MAC)</div>
+          <div class="kbox pmk"><b>PMK-R0</b>Held by the <strong>R0 key holder</strong> (R0KH), usually the WLAN controller. One per client per mobility domain.</div>
+          <div class="karrow">↓ KDF(PMK-R0, R1KH-ID, client MAC)</div>
+          <div class="kbox pmk"><b>PMK-R1</b>Held by an <strong>R1 key holder</strong> (R1KH), i.e. each AP. A different one for every AP the client might join.</div>
+          <div class="karrow">↓ KDF(PMK-R1, ANonce, SNonce, BSSID, client MAC)</div>
+          <div class="kbox ptkh"><b>PTK</b>Same KCK / KEK / TK split as before. Fresh for every association.</div>
+        </div>
+        <p>Because each AP only ever holds its own PMK-R1, a compromised AP can’t derive the keys for other APs.</p>
+
+        <h3>First connection: Initial Mobility Domain Association</h3>
+        <p>The first time a client joins any AP in the mobility domain, there is nothing to shortcut yet. It connects the normal way, with two differences:</p>
+        <ul class="facts">
+          <li>The Association Request and Response carry the <strong>MDE</strong> and the <strong>Fast BSS Transition Element (FTE)</strong>, and the client picks an FT AKM (e.g. FT-802.1X).</li>
+          <li>After full EAP (enterprise) or SAE, the <strong>4-way handshake</strong> also carries the MDE, FTE and key names. This sets up PMK-R0 on the controller and PMK-R1 on the first AP.</li>
+        </ul>
+        <p>From then on, every roam within the mobility domain uses the fast path.</p>
+
+        <h3>The fast roam: FT over the air</h3>
+        <p>The client talks directly to the target AP. The four frames that would normally just be Authentication and Reassociation now also carry the nonces and MICs that the 4-way handshake used to carry.</p>
+        <figure>
+          <div class="fig wide">
+            <svg viewBox="0 0 720 510" role="img" aria-label="Sequence diagram of an 802.11r over-the-air fast roam between client, target AP and controller: four frames between client and target AP, with the target AP fetching PMK-R1 from the controller over the wired network.">
+              <rect x="20" y="10" width="140" height="44" rx="6" class="actor"/>
+              <text x="90" y="30" text-anchor="middle" font-size="14" font-weight="600">Client</text>
+              <text x="90" y="46" text-anchor="middle" font-size="11.5" class="t-muted">Supplicant</text>
+              <rect x="350" y="10" width="160" height="44" rx="6" class="actor"/>
+              <text x="430" y="30" text-anchor="middle" font-size="14" font-weight="600">Target AP</text>
+              <text x="430" y="46" text-anchor="middle" font-size="11.5" class="t-muted">R1 key holder</text>
+              <rect x="560" y="10" width="140" height="44" rx="6" class="actor"/>
+              <text x="630" y="30" text-anchor="middle" font-size="14" font-weight="600">Controller</text>
+              <text x="630" y="46" text-anchor="middle" font-size="11.5" class="t-muted">R0 key holder</text>
+              <line x1="90" y1="54" x2="90" y2="462" class="lifeline"/>
+              <line x1="430" y1="54" x2="430" y2="462" class="lifeline"/>
+              <line x1="630" y1="54" x2="630" y2="462" class="lifeline"/>
+
+              <rect x="40" y="70" width="640" height="32" rx="6" class="pre"/>
+              <text x="360" y="91" text-anchor="middle" font-size="12.5">Already connected to another AP in this mobility domain · controller holds <tspan font-weight="600">PMK-R0</tspan></text>
+
+              <!-- 1 -->
+              <text x="260" y="130" text-anchor="middle" font-size="13" class="t-mono" font-weight="600">① Authentication Request (FT)</text>
+              <text x="260" y="145" text-anchor="middle" font-size="11" class="t-mono t-muted">MDE · FTE[SNonce, R0KH-ID] · RSNE[PMKR0Name]</text>
+              <line x1="92" y1="154" x2="426" y2="154" class="msg" marker-end="url(#arr-ink)"/>
+
+              <!-- wired fetch -->
+              <text x="530" y="174" text-anchor="middle" font-size="11.5" class="t-muted">request PMK-R1</text>
+              <line x1="432" y1="182" x2="626" y2="182" class="msg wired" marker-end="url(#arr-ink)"/>
+              <text x="530" y="208" text-anchor="middle" font-size="11.5" class="t-muted">PMK-R1 for this AP</text>
+              <line x1="628" y1="216" x2="434" y2="216" class="msg wired" marker-end="url(#arr-ink)"/>
+              <text x="530" y="236" text-anchor="middle" font-size="11" class="t-muted">wired · skipped if pre-pushed</text>
+
+              <!-- 2 -->
+              <text x="260" y="262" text-anchor="middle" font-size="13" class="t-mono" font-weight="600">② Authentication Response (FT)</text>
+              <text x="260" y="277" text-anchor="middle" font-size="11" class="t-mono t-muted">FTE[ANonce, SNonce, R1KH-ID]</text>
+              <line x1="428" y1="286" x2="94" y2="286" class="msg" marker-end="url(#arr-ink)"/>
+              <rect x="100" y="296" width="230" height="26" rx="5" class="note"/>
+              <text x="112" y="313" font-size="12" class="t-muted">Derives PMK-R1 → <tspan font-weight="600" class="t-mono" style="fill:var(--ink)">PTK</tspan></text>
+              <rect x="440" y="296" width="180" height="26" rx="5" class="note"/>
+              <text x="452" y="313" font-size="12" class="t-muted">Derives the same <tspan font-weight="600" class="t-mono" style="fill:var(--ink)">PTK</tspan></text>
+
+              <!-- 3 -->
+              <text x="260" y="350" text-anchor="middle" font-size="13" class="t-mono" font-weight="600">③ Reassociation Request</text>
+              <text x="260" y="365" text-anchor="middle" font-size="11" class="t-mono t-muted">RSNE[PMKR1Name] · MDE · FTE[MIC]</text>
+              <line x1="92" y1="374" x2="426" y2="374" class="msg" marker-end="url(#arr-ink)"/>
+
+              <!-- 4 -->
+              <text x="260" y="416" text-anchor="middle" font-size="13" class="t-mono" font-weight="600">④ Reassociation Response</text>
+              <text x="260" y="431" text-anchor="middle" font-size="11" class="t-mono t-muted">RSNE · MDE · FTE[MIC, GTK encrypted with KEK]</text>
+              <line x1="428" y1="440" x2="94" y2="440" class="msg" marker-end="url(#arr-ink)"/>
+
+              <rect x="40" y="462" width="640" height="34" rx="6" class="done"/>
+              <text x="360" y="484" text-anchor="middle" font-size="12.5">Keys installed — data flows. No EAP, no separate 4-way handshake.</text>
+            </svg>
+          </div>
+          <figcaption>Frames ① and ② do the job of 4-way messages 1–2 (exchanging nonces). Frames ③ and ④ do the job of messages 3–4 (proving both sides have the key with a MIC, and delivering the GTK). Many controllers push PMK-R1 to neighbouring APs in advance, so the wired fetch often isn’t needed during the roam.</figcaption>
+        </figure>
+
+        <h4>Over the air vs. over the DS</h4>
+        <div class="tbl">
+          <table>
+            <thead><tr><th></th><th>FT over the air</th><th>FT over the DS</th></tr></thead>
+            <tbody>
+              <tr><td><strong>How</strong></td><td>Client sends FT Authentication frames directly to the target AP</td><td>Client sends <span class="mono">FT Action</span> frames to its <em>current</em> AP, which forwards them over the wired network (the distribution system) to the target AP</td></tr>
+              <tr><td><strong>Then</strong></td><td>Reassociates with the target AP</td><td>Reassociates with the target AP</td></tr>
+              <tr><td><strong>Why use it</strong></td><td>Simple; the usual default</td><td>Pre-authenticates while still on a good link to the current AP</td></tr>
+              <tr><td><strong>Downside</strong></td><td>The exchange starts only once the client has decided to move</td><td>Depends on the current AP and the wired path; inconsistent client support</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Deploying 802.11r</h3>
+        <ul class="facts">
+          <li><strong>FT AKMs:</strong> 3 = FT-802.1X, 4 = FT-PSK, 9 = FT-SAE (13 = FT-802.1X with SHA-384). These appear in the RSNE alongside or instead of the regular AKMs (1, 2, 8).</li>
+          <li><strong>All APs in the mobility domain</strong> need the same SSID, the same MDID and the same security settings, plus a way to share keys (normally a controller or the vendor’s cloud).</li>
+          <li><strong>Mixed / adaptive mode:</strong> advertises both the FT and non-FT AKM (e.g. 1 and 3) so FT-capable clients use FT and others connect normally.</li>
+          <li><strong>FT-PSK still has the PSK weakness.</strong> 802.11r speeds up the roam but doesn’t fix offline password cracking. That’s still WPA3/SAE’s job.</li>
+          <li><strong>KRACK (2017)</strong> also hit the FT handshake: replaying the Reassociation Request could reinstall keys. Fixed by patches.</li>
+        </ul>
+        <div class="callout trap"><span class="k">Common trap</span><p>Some older clients mishandle the extra FT elements in beacons and fail to connect, or can’t even see the SSID, when FT is turned on. That’s why mixed/adaptive mode exists, and why some networks put FT on a separate voice SSID.</p></div>
+
+        <h3>The r / k / v trio</h3>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>Amendment</th><th>Answers</th><th>What it does</th></tr></thead>
+            <tbody>
+              <tr><td class="nw mono">802.11k</td><td><em>Where</em> should I look?</td><td>Radio Resource Measurement: the AP gives the client a <strong>neighbor report</strong> (nearby APs and their channels), so the client scans only those channels instead of all of them.</td></tr>
+              <tr><td class="nw mono">802.11v</td><td><em>When / to which AP</em> should I go?</td><td>BSS Transition Management: the AP can <strong>suggest</strong> a better AP (for load balancing, band steering, or before shutting down). The client may refuse.</td></tr>
+              <tr><td class="nw mono">802.11r</td><td><em>How</em> do I move fast?</td><td>Fast BSS Transition: completes authentication and key setup in 4 frames.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout tip"><span class="k">Exam tip</span><p>k finds the next AP, v nudges the client toward it, and r makes the move fast. The client still makes the final decision. The Wi-Fi Alliance’s <strong>Voice-Enterprise</strong> certification requires all three.</p></div>
+      </section>
+
+      <!-- ================= 6 NUMBERS ================= -->
+      <section id="numbers">
+        <div class="sec-head"><span class="sec-num">06</span><h2>Numbers to memorize</h2></div>
+        <div class="nums">
+          <div class="num"><span class="v c24">1 · 6 · 11</span><span class="d">Non-overlapping 2.4 GHz channels (US)</span></div>
+          <div class="num"><span class="v c5">25</span><span class="d">Non-overlapping 20 MHz channels in 5 GHz (US, incl. DFS)</span></div>
+          <div class="num"><span class="v c6">59</span><span class="d">20 MHz channels in 6 GHz (1200 MHz of spectrum)</span></div>
+          <div class="num"><span class="v">60 s</span><span class="d">DFS Channel Availability Check before transmitting</span></div>
+          <div class="num"><span class="v">102.4 ms</span><span class="d">Default beacon interval (100 TU)</span></div>
+          <div class="num"><span class="v">±3 dB</span><span class="d">Double / halve the power</span></div>
+          <div class="num"><span class="v">6 dB</span><span class="d">Extra path loss each time distance doubles</span></div>
+          <div class="num"><span class="v">20 dBm</span><span class="d">= 100 mW (0 dBm = 1 mW)</span></div>
+          <div class="num"><span class="v">−67 dBm</span><span class="d">Signal design target for voice and video</span></div>
+          <div class="num"><span class="v">60%</span><span class="d">Minimum clear first Fresnel zone on a point-to-point link</span></div>
+          <div class="num"><span class="v">8–63</span><span class="d">Characters in a WPA2/WPA3 passphrase</span></div>
+          <div class="num"><span class="v">4096</span><span class="d">PBKDF2 iterations turning a WPA2 passphrase into the PMK</span></div>
+        </div>
+      </section>
+
+      <!-- ================= 6 QUIZ ================= -->
+      <section id="quiz">
+        <div class="sec-head"><span class="sec-num">07</span><h2>Self-test</h2></div>
+        <p>Answer out loud before you reveal each one.</p>
+        <div class="quiz-bar">
+          <button type="button" id="reveal-all">Reveal all answers</button>
+          <button type="button" id="hide-all">Hide all answers</button>
+        </div>
+        <div class="quiz" id="quiz-list">
+          <details class="q"><summary><span class="qn">Q1</span><span>Which 2.4 GHz channels don’t overlap in the US, and why only those?</span><span class="rv">Reveal</span></summary><div class="a"><p>1, 6 and 11. Channels are 5 MHz apart but ~20–22 MHz wide, so you need a gap of 5 channel numbers to avoid overlap, and only three fit in 1–11.</p></div></details>
+          <details class="q"><summary><span class="qn">Q2</span><span>Which 5 GHz sub-bands require DFS, and what does DFS protect?</span><span class="rv">Reveal</span></summary><div class="a"><p>U-NII-2A (ch 52–64) and U-NII-2C (ch 100–144). DFS protects radar (weather, military): the AP must check for radar for 60 s before using the channel and move off it if radar appears.</p></div></details>
+          <details class="q"><summary><span class="qn">Q3</span><span>What security options are allowed on 6 GHz?</span><span class="rv">Reveal</span></summary><div class="a"><p>WPA3 (SAE with H2E, or WPA3-Enterprise) or Enhanced Open (OWE), all with PMF. No WPA2, no open networks, no transition mode.</p></div></details>
+          <details class="q"><summary><span class="qn">Q4</span><span>Name two ways a client can discover a 6 GHz AP.</span><span class="rv">Reveal</span></summary><div class="a"><p>A Reduced Neighbor Report in the AP’s 2.4/5 GHz beacons, or scanning the 15 Preferred Scanning Channels (PSCs).</p></div></details>
+          <details class="q"><summary><span class="qn">Q5</span><span>You double the distance from the AP. How much signal do you lose in free space?</span><span class="rv">Reveal</span></summary><div class="a"><p>About 6 dB (one quarter of the power).</p></div></details>
+          <details class="q"><summary><span class="qn">Q6</span><span>A signal goes from 50 mW to 100 mW. How many dB is that? What is 100 mW in dBm?</span><span class="rv">Reveal</span></summary><div class="a"><p>+3 dB (doubling). 100 mW = 20 dBm.</p></div></details>
+          <details class="q"><summary><span class="qn">Q7</span><span>Which RF behaviour is the main cause of multipath, and how did 802.11n turn multipath into an advantage?</span><span class="rv">Reveal</span></summary><div class="a"><p>Reflection. 802.11n’s MIMO sends independent spatial streams over the different paths.</p></div></details>
+          <details class="q"><summary><span class="qn">Q8</span><span>Signals are much weaker through a crowd of people. Which behaviour is that?</span><span class="rv">Reveal</span></summary><div class="a"><p>Absorption. Bodies are mostly water, which turns RF energy into heat.</p></div></details>
+          <details class="q"><summary><span class="qn">Q9</span><span>Put in order: 4-way handshake, association, probe, 802.1X/EAP, 802.11 authentication.</span><span class="rv">Reveal</span></summary><div class="a"><p>Probe → 802.11 authentication → association → 802.1X/EAP (enterprise only) → 4-way handshake.</p></div></details>
+          <details class="q"><summary><span class="qn">Q10</span><span>What does M1 carry, and why has it no MIC?</span><span class="rv">Reveal</span></summary><div class="a"><p>The ANonce (plus a replay counter). The client can’t have a PTK yet, so there’s no KCK to compute a MIC with.</p></div></details>
+          <details class="q"><summary><span class="qn">Q11</span><span>What five inputs produce the PTK?</span><span class="rv">Reveal</span></summary><div class="a"><p>PMK, ANonce, SNonce, the AP’s MAC and the client’s MAC.</p></div></details>
+          <details class="q"><summary><span class="qn">Q12</span><span>Which key encrypts the GTK in message 3? Which encrypts unicast data?</span><span class="rv">Reveal</span></summary><div class="a"><p>The KEK encrypts the GTK. The TK encrypts unicast data.</p></div></details>
+          <details class="q"><summary><span class="qn">Q13</span><span>Why can WPA2-Personal passwords be cracked offline?</span><span class="rv">Reveal</span></summary><div class="a"><p>M1 + M2 (or the PMKID) contain the nonces, MACs and a MIC. An attacker guesses a passphrase, derives PMK → PTK, and checks if the MIC matches, without ever talking to the AP again.</p></div></details>
+          <details class="q"><summary><span class="qn">Q14</span><span>What replaces the PSK in WPA3-Personal, and what two properties does it add?</span><span class="rv">Reveal</span></summary><div class="a"><p>SAE (Simultaneous Authentication of Equals). It adds resistance to offline dictionary attacks and forward secrecy.</p></div></details>
+          <details class="q"><summary><span class="qn">Q15</span><span>What does PMF (802.11w) protect against?</span><span class="rv">Reveal</span></summary><div class="a"><p>Spoofed deauthentication and disassociation frames, used to kick clients off or force them to reconnect so an attacker can capture a handshake.</p></div></details>
+          <details class="q"><summary><span class="qn">Q16</span><span>A café wants encryption without a password. What should it use, and what doesn’t it protect against?</span><span class="rv">Reveal</span></summary><div class="a"><p>Wi-Fi Enhanced Open (OWE). It encrypts each client’s traffic but doesn’t authenticate the AP, so an evil twin is still possible.</p></div></details>
+          <details class="q"><summary><span class="qn">Q17</span><span>Which EAP method needs certificates on both client and server?</span><span class="rv">Reveal</span></summary><div class="a"><p>EAP-TLS. PEAP and EAP-TTLS need only a server certificate.</p></div></details>
+          <details class="q"><summary><span class="qn">Q18</span><span>Why aren’t a hidden SSID and MAC filtering real security?</span><span class="rv">Reveal</span></summary><div class="a"><p>The SSID still appears in probe and association frames, and MAC addresses are sent in clear text and easy to spoof.</p></div></details>
+          <details class="q"><summary><span class="qn">Q19</span><span>How does a client tell which security methods an AP supports, and where does it state its choice?</span><span class="rv">Reveal</span></summary><div class="a"><p>The AKMs listed in the RSN Information Element of Beacons and Probe Responses. The client names its chosen AKM in the RSNE of its Association Request, after running SAE in the Authentication frames if it chose WPA3.</p></div></details>
+          <details class="q"><summary><span class="qn">Q20</span><span>In WPA2/WPA3 transition mode, how does an attacker force a downgrade, and which feature stops it?</span><span class="rv">Reveal</span></summary><div class="a"><p>A fake AP with the same SSID advertises only PSK, so the client connects with WPA2 and hands over M2 for offline cracking. Transition Disable stops it: after one WPA3 connection, the real AP tells the client to stop accepting WPA2 for that network.</p></div></details>
+          <details class="q"><summary><span class="qn">Q21</span><span>What two steps of a normal enterprise roam does 802.11r eliminate, and how many frames does an FT roam take?</span><span class="rv">Reveal</span></summary><div class="a"><p>The full EAP exchange with RADIUS and the separate 4-way handshake. An FT roam takes 4 frames: FT Authentication Request/Response and Reassociation Request/Response.</p></div></details>
+          <details class="q"><summary><span class="qn">Q22</span><span>Which device holds PMK-R0 and which holds PMK-R1?</span><span class="rv">Reveal</span></summary><div class="a"><p>PMK-R0 is held by the R0 key holder, usually the controller (one per client per mobility domain). PMK-R1 is held by each AP, the R1 key holder, with a different one for each AP.</p></div></details>
+          <details class="q"><summary><span class="qn">Q23</span><span>What’s the difference between FT over the air and FT over the DS?</span><span class="rv">Reveal</span></summary><div class="a"><p>Over the air, the client sends FT Authentication frames directly to the target AP. Over the DS, it sends FT Action frames to its current AP, which forwards them across the wired network to the target. Both finish with a reassociation to the target AP.</p></div></details>
+          <details class="q"><summary><span class="qn">Q24</span><span>Match 802.11k, 802.11v and 802.11r to what each does for roaming.</span><span class="rv">Reveal</span></summary><div class="a"><p>k: neighbor reports tell the client where to scan. v: BSS Transition Management lets the AP suggest a better AP. r: Fast BSS Transition makes the key exchange fast.</p></div></details>
+          <details class="q"><summary><span class="qn">Q25</span><span>A network uses FT-PSK. Is it protected against offline password cracking?</span><span class="rv">Reveal</span></summary><div class="a"><p>No. 802.11r only speeds up the roam; the PSK is still the root key. Use FT-SAE (WPA3) or FT-802.1X for that protection.</p></div></details>
+        </div>
+      </section>
+
+      <footer>Channel counts reflect US (FCC) rules unless noted. Other regions differ; check your exam’s region assumptions.</footer>
+    </main>
+  </div>
+</div>
+
+<script>
+(function(){
+  // 2.4 GHz channel overlap diagram
+  var svg = document.getElementById('ch24');
+  if (svg) {
+    var f0 = 2395, k = 650 / 105, x0 = 40, base = 172, top = 70, half = 11 * k;
+    function x(f){ return x0 + (f - f0) * k; }
+    var out = [];
+    // band edges
+    [[2400,'2.400'],[2483.5,'2.4835']].forEach(function(e){
+      out.push('<line x1="'+x(e[0]).toFixed(1)+'" y1="40" x2="'+x(e[0]).toFixed(1)+'" y2="'+base+'" class="grid" stroke-dasharray="2 3"/>');
+    });
+    var main = {1:1,6:1,11:1};
+    var order = [2,3,4,5,7,8,9,10,12,13,14,1,6,11];
+    order.forEach(function(n){
+      var fc = n === 14 ? 2484 : 2407 + 5 * n;
+      var c = x(fc);
+      var cls = main[n] ? 'ch-main' : (n === 14 ? 'ch-jp' : 'ch-other');
+      var d = 'M'+(c-half).toFixed(1)+' '+base+
+              ' C'+(c-half*0.53).toFixed(1)+' '+base+' '+(c-half*0.47).toFixed(1)+' '+top+' '+c.toFixed(1)+' '+top+
+              ' S'+(c+half*0.53).toFixed(1)+' '+base+' '+(c+half).toFixed(1)+' '+base;
+      out.push('<path d="'+d+'" class="'+cls+'"/>');
+    });
+    for (var n = 1; n <= 14; n++) {
+      var fc = n === 14 ? 2484 : 2407 + 5 * n;
+      var isMain = !!main[n];
+      out.push('<text x="'+x(fc).toFixed(1)+'" y="'+(top-8)+'" text-anchor="middle" font-size="'+(isMain?13:11.5)+'" '+
+        (isMain ? 'font-weight="700" class="t-mono t24"' : 'class="t-mono t-muted"')+'>'+n+'</text>');
+    }
+    out.push('<text x="'+x(2407).toFixed(1)+'" y="32" class="t-muted" font-size="11.5" text-anchor="start">channel</text>');
+    out.push('<line x1="'+x0+'" y1="'+base+'" x2="690" y2="'+base+'" class="axis"/>');
+    [[2400,'2.400'],[2412,'2.412'],[2437,'2.437'],[2462,'2.462'],[2483.5,'2.4835']].forEach(function(t){
+      var xx = x(t[0]).toFixed(1);
+      out.push('<line x1="'+xx+'" y1="'+base+'" x2="'+xx+'" y2="'+(base+5)+'" class="axis"/>');
+      out.push('<text x="'+xx+'" y="'+(base+20)+'" text-anchor="middle" font-size="11" class="t-mono t-muted">'+t[1]+'</text>');
+    });
+    out.push('<text x="690" y="'+(base+36)+'" text-anchor="end" font-size="11" class="t-muted">GHz</text>');
+    svg.innerHTML = out.join('');
+  }
+
+  // Quiz controls
+  var list = document.getElementById('quiz-list');
+  function setAll(open){ list.querySelectorAll('details').forEach(function(d){ d.open = open; }); }
+  document.getElementById('reveal-all').addEventListener('click', function(){ setAll(true); });
+  document.getElementById('hide-all').addEventListener('click', function(){ setAll(false); });
+
+  // Highlight current section in the contents
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id); });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    document.querySelectorAll('main section').forEach(function(s){ io.observe(s); });
+  }
+})();
+</script>

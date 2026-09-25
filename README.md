@@ -15,3 +15,5 @@ A study guide to IEEE 802.11 (Wi-Fi), from Wi-Fi 4 through Wi-Fi 7.
 | Review | Numbers to memorize and a 25-question self-test |
 
 Diagrams are in [`images/`](images/) as SVGs that follow your light or dark theme.
+
+Editing the guide or its diagrams? Start with [HANDOFF.md](HANDOFF.md).
