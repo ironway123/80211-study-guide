@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 744 406" width="744" height="406" role="img" aria-label="802.11r key hierarchy: XXKey from 802.1X, PSK or SAE produces PMK-R0 on the controller, which produces a PMK-R1 for each AP, which produces the PTK.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 744 280" width="744" height="280" role="img" aria-label="RTS/CTS timeline: client A sends RTS, the AP answers CTS, then DATA and ACK follow, each after SIFS. Stations near A set their NAV from the RTS; hidden client B sets its NAV from the CTS.">
 <style>
 .bg{fill:#FFFFFF;stroke:#D3DBE1;stroke-width:1}
 text{font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;fill:#15212B}
@@ -134,37 +134,36 @@ text{font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Helvetica,Ar
 <marker id="arr-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="mk-ink"/></marker>
 <pattern id="dfs-hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" class="f5"/><line x1="0" y1="0" x2="0" y2="5" class="hatch-line"/></pattern>
 </defs>
-<rect class="bg" x="0.5" y="0.5" width="743" height="405" rx="10"/>
+<rect class="bg" x="0.5" y="0.5" width="743" height="279" rx="10"/>
 <g transform="translate(12,12)">
-<rect x="10" y="0" width="220" height="72" rx="7" class="kb"/>
-<text x="120.0" y="20" text-anchor="middle" font-size="13" font-weight="600" class="t-mono">FT-802.1X</text>
-<text x="120.0" y="38" text-anchor="middle" font-size="12" class="t-muted">XXKey = second 256 bits</text>
-<text x="120.0" y="54" text-anchor="middle" font-size="12" class="t-muted">of the EAP MSK</text>
-<line x1="120" y1="72" x2="350" y2="94" class="kline"/>
-<rect x="250" y="0" width="220" height="72" rx="7" class="kb"/>
-<text x="360.0" y="20" text-anchor="middle" font-size="13" font-weight="600" class="t-mono">FT-PSK</text>
-<text x="360.0" y="38" text-anchor="middle" font-size="12" class="t-muted">XXKey = the PSK</text>
-<text x="360.0" y="54" text-anchor="middle" font-size="12" class="t-muted">(from the passphrase)</text>
-<line x1="360" y1="72" x2="350" y2="94" class="kline"/>
-<rect x="490" y="0" width="220" height="72" rx="7" class="kb"/>
-<text x="600.0" y="20" text-anchor="middle" font-size="13" font-weight="600" class="t-mono">FT-SAE</text>
-<text x="600.0" y="38" text-anchor="middle" font-size="12" class="t-muted">XXKey = the PMK from</text>
-<text x="600.0" y="54" text-anchor="middle" font-size="12" class="t-muted">the SAE exchange</text>
-<line x1="600" y1="72" x2="350" y2="94" class="kline"/>
-<line x1="350" y1="94" x2="350" y2="138" class="kline" marker-end="url(#arr-ink)"/>
-<text x="362" y="122" font-size="11.5" class="t-mono t-muted">KDF(XXKey, SSID, MDID, R0KH-ID, client MAC)</text>
-<rect x="120" y="140" width="460" height="50" rx="7" class="kb-acc"/>
-<text x="350.0" y="160" text-anchor="middle" font-size="13" font-weight="600" class="t-mono kt-acc">PMK-R0</text>
-<text x="350.0" y="178" text-anchor="middle" font-size="12" class="t-muted">held by the controller (R0KH) · one per client per mobility domain</text>
-<line x1="350" y1="190" x2="350" y2="234" class="kline" marker-end="url(#arr-ink)"/>
-<text x="362" y="216" font-size="11.5" class="t-mono t-muted">KDF(PMK-R0, R1KH-ID, client MAC)</text>
-<rect x="120" y="236" width="460" height="50" rx="7" class="kb-acc"/>
-<text x="350.0" y="256" text-anchor="middle" font-size="13" font-weight="600" class="t-mono kt-acc">PMK-R1</text>
-<text x="350.0" y="274" text-anchor="middle" font-size="12" class="t-muted">held by each AP (R1KH) · a different one per AP</text>
-<line x1="350" y1="286" x2="350" y2="330" class="kline" marker-end="url(#arr-ink)"/>
-<text x="362" y="312" font-size="11.5" class="t-mono t-muted">KDF(PMK-R1, ANonce, SNonce, BSSID, client MAC)</text>
-<rect x="120" y="332" width="460" height="50" rx="7" class="kb-acc"/>
-<text x="350.0" y="352" text-anchor="middle" font-size="13" font-weight="600" class="t-mono kt-acc">PTK</text>
-<text x="350.0" y="370" text-anchor="middle" font-size="12" class="t-muted">same KCK / KEK / TK split · fresh every association</text>
+<line x1="190" y1="24" x2="190" y2="222" class="grid" stroke-dasharray="2 3"/>
+<line x1="255" y1="24" x2="255" y2="222" class="grid" stroke-dasharray="2 3"/>
+<line x1="625" y1="24" x2="625" y2="222" class="grid" stroke-dasharray="2 3"/>
+<text x="0.0" y="48" text-anchor="start" font-size="12" font-weight="600">Client A</text>
+<line x1="130" y1="58" x2="710" y2="58" class="row-line"/>
+<text x="0.0" y="98" text-anchor="start" font-size="12" font-weight="600">AP</text>
+<line x1="130" y1="108" x2="710" y2="108" class="row-line"/>
+<text x="0.0" y="158" text-anchor="start" font-size="12" font-weight="600">Station near A</text>
+<line x1="130" y1="168" x2="710" y2="168" class="row-line"/>
+<text x="0.0" y="208" text-anchor="start" font-size="12" font-weight="600">Client B (hidden)</text>
+<line x1="130" y1="218" x2="710" y2="218" class="row-line"/>
+<rect x="140.0" y="30" width="50.0" height="28" rx="3" class="tx-a"/>
+<text x="165.0" y="48" text-anchor="middle" font-size="11.5" class="on-fill t-mono" font-weight="600">RTS</text>
+<rect x="275.0" y="30" width="285.0" height="28" rx="3" class="tx-a"/>
+<text x="417.0" y="48" text-anchor="middle" font-size="11.5" class="on-fill t-mono" font-weight="600">DATA</text>
+<rect x="210.0" y="80" width="45.0" height="28" rx="3" class="ackbox"/>
+<text x="232.0" y="98" text-anchor="middle" font-size="11.5" class="t-mono" font-weight="600">CTS</text>
+<rect x="580.0" y="80" width="45.0" height="28" rx="3" class="ackbox"/>
+<text x="602.0" y="98" text-anchor="middle" font-size="11.5" class="t-mono" font-weight="600">ACK</text>
+<text x="200.0" y="72" text-anchor="middle" font-size="9.5" class="t-mono t-muted">SIFS</text>
+<text x="265.0" y="72" text-anchor="middle" font-size="9.5" class="t-mono t-muted">SIFS</text>
+<text x="570.0" y="72" text-anchor="middle" font-size="9.5" class="t-mono t-muted">SIFS</text>
+<rect x="190.0" y="144" width="435.0" height="20" rx="3" class="nav"/>
+<text x="407.0" y="158" text-anchor="middle" font-size="11" class="t-nav">NAV set from the RTS Duration field · stays quiet</text>
+<text x="248.0" y="208" text-anchor="end" font-size="11" class="t-muted">can’t hear the RTS</text>
+<rect x="255.0" y="194" width="370.0" height="20" rx="3" class="nav"/>
+<text x="440.0" y="208" text-anchor="middle" font-size="11" class="t-nav">NAV set from the AP’s CTS · stays quiet</text>
+<line x1="130" y1="236" x2="706" y2="236" class="msg" marker-end="url(#arr-ink)"/>
+<text x="130.0" y="252" text-anchor="start" font-size="11" class="t-muted">time (not to scale)</text>
 </g>
 </svg>

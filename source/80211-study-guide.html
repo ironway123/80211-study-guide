@@ -848,7 +848,7 @@ footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-si
               <line x1="358" y1="714" x2="104" y2="714" class="msg" marker-end="url(#arr-ink)"/>
               <rect x="60" y="730" width="600" height="46" rx="6" class="done"/>
               <text x="360" y="749" text-anchor="middle" font-size="12.5">Client and AP now share the <tspan font-weight="600">MSK</tspan> → PMK = its first 256 bits</text>
-              <text x="360" y="766" text-anchor="middle" font-size="12" class="t-muted">Next: 4-way handshake (section 3). The AP opens the port only after that.</text>
+              <text x="360" y="766" text-anchor="middle" font-size="12" class="t-muted">Next: 4-way handshake (section 4). The AP opens the port only after that.</text>
             </svg>
           </div>
           <figcaption>A PEAP (MSCHAPv2) login. Dots on the AP’s line mark EAP messages it relays unchanged between EAPOL and RADIUS. Simplified: PEAP also exchanges an inner success message and a result TLV before the Access-Accept.</figcaption>
@@ -918,7 +918,7 @@ footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-si
 
               <rect x="60" y="540" width="600" height="46" rx="6" class="done"/>
               <text x="360" y="559" text-anchor="middle" font-size="12.5">Both proved they know the password without revealing it · <tspan font-weight="600">PMK</tspan> is shared</text>
-              <text x="360" y="576" text-anchor="middle" font-size="12" class="t-muted">Next: Association Request/Response → 4-way handshake (section 3)</text>
+              <text x="360" y="576" text-anchor="middle" font-size="12" class="t-muted">Next: Association Request/Response → 4-way handshake (section 4)</text>
             </svg>
           </div>
           <figcaption>SAE runs inside 802.11 Authentication frames, before association. The two Commits can cross in flight: neither side waits for the other, which is the “simultaneous” in the name. A wrong password produces a different K, so the Confirm check fails and the attempt is rejected.</figcaption>

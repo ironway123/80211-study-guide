@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 744 236" width="744" height="236" role="img" aria-label="802.11 MAC frame format: Frame Control, Duration/ID, Addresses 1 to 3, Sequence Control, optional Address 4, QoS Control and HT Control, frame body and FCS, with the Frame Control field expanded into its bit fields.">
+<style>
+.bg{fill:#FFFFFF;stroke:#D3DBE1;stroke-width:1}
+text{font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;fill:#15212B}
+.t-mono{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.t-muted{fill:#56646F}
+.ink{fill:#15212B}
+.axis{stroke:#56646F;stroke-width:1;fill:none}
+.grid{stroke:#D3DBE1;stroke-width:1;fill:none}
+.ch-main{fill:#B25F08;fill-opacity:.16;stroke:#B25F08;stroke-width:2}
+.ch-other{fill:none;stroke:#56646F;stroke-width:1;stroke-dasharray:3 3;opacity:.75}
+.ch-jp{fill:none;stroke:#56646F;stroke-width:1;stroke-dasharray:1 3;opacity:.6}
+.f24{fill:#B25F08}.f5{fill:#0A7381}.f6{fill:#6947BF}
+.t24{fill:#B25F08}.t5{fill:#0A7381}.t6{fill:#6947BF}
+.mk{fill:#1E4E8C}.mk-ink{fill:#15212B}
+.ray{stroke:#1E4E8C;stroke-width:2;fill:none;stroke-linecap:round}
+.ray.thin{stroke-width:1.3}
+.surf{stroke:#15212B;stroke-width:3;fill:none}
+.hatch{stroke:#56646F;stroke-width:1;fill:none}
+.guide{stroke:#56646F;stroke-width:1;stroke-dasharray:3 3;fill:none}
+.medium{fill:#DAEFF1;stroke:none}
+.block{fill:#56646F;fill-opacity:.55;stroke:none}
+.block-soft{fill:#0A7381;fill-opacity:.22;stroke:#0A7381;stroke-width:1}
+.shadow{fill:#56646F;fill-opacity:.12;stroke:none}
+.wave{stroke:#0A7381;stroke-width:1.5;fill:none}
+.particle{fill:#15212B}
+.lifeline{stroke:#D3DBE1;stroke-width:2;stroke-dasharray:5 4;fill:none}
+.actor{fill:#EAEFF3;stroke:#D3DBE1;stroke-width:1}
+.msg{stroke:#15212B;stroke-width:1.8;fill:none}
+.msg.wired{stroke:#56646F;stroke-dasharray:5 4}
+.note{fill:#EAEFF3;stroke:none}
+.pre{fill:#E2EBF7;stroke:none}
+.done{fill:#DFF0E6;stroke:none}
+.dfs{fill:url(#dfs-hatch)}
+.hatch-line{stroke:#FFFFFF;stroke-width:1.6}
+.kb{fill:#EAEFF3;stroke:none}
+.kb-acc{fill:#E2EBF7;stroke:none}
+.kb-gtk{fill:#DAEFF1;stroke:none}
+.kt-acc{fill:#1E4E8C}
+.kt-gtk{fill:#0A7381}
+.kline{stroke:#56646F;stroke-width:1.5;fill:none}
+.wired-zone{fill:#EAEFF3;stroke:none}
+.halo{paint-order:stroke;stroke:#FFFFFF;stroke-width:5px;stroke-linejoin:round}
+.relay{fill:#FFFFFF;stroke:#15212B;stroke-width:1.5}
+.fld{fill:#EAEFF3;stroke:#D3DBE1;stroke-width:1}
+.fld-opt{fill:#FFFFFF;stroke:#56646F;stroke-width:1;stroke-dasharray:3 3}
+.fld-hi{fill:#E2EBF7;stroke:#1E4E8C;stroke-width:1}
+.busy{fill:#56646F;fill-opacity:.35;stroke:none}
+.ifs{fill:#FFFFFF;stroke:#56646F;stroke-width:1;stroke-dasharray:2 2}
+.tx-a{fill:#1E4E8C;stroke:none}
+.tx-b{fill:#0A7381;stroke:none}
+.on-fill{fill:#FFFFFF}
+.ackbox{fill:#FFFFFF;stroke:#15212B;stroke-width:1.5}
+.slot{fill:#FFFFFF;stroke:#56646F;stroke-width:1}
+.frozen{fill:#56646F;fill-opacity:.12;stroke:#56646F;stroke-width:1;stroke-dasharray:4 3}
+.nav{fill:#6947BF;fill-opacity:.2;stroke:#6947BF;stroke-width:1}
+.t-nav{fill:#6947BF}
+.range-a{fill:#1E4E8C;fill-opacity:.07;stroke:#1E4E8C;stroke-width:1.2;stroke-dasharray:5 4}
+.range-b{fill:#0A7381;fill-opacity:.07;stroke:#0A7381;stroke-width:1.2;stroke-dasharray:5 4}
+.t-acc{fill:#1E4E8C}
+.dev{fill:#FFFFFF;stroke:#15212B;stroke-width:1.5}
+.warn-f{fill:#A0441A}
+.warn-s{stroke:#A0441A;stroke-width:1.5;fill:none;stroke-dasharray:4 4}
+.t-warn{fill:#A0441A}
+.row-line{stroke:#D3DBE1;stroke-width:1;fill:none}
+@media (prefers-color-scheme: dark){
+.bg{fill:#141C23;stroke:#29353F;stroke-width:1}
+text{font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;fill:#E2E8ED}
+.t-mono{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.t-muted{fill:#98A5AF}
+.ink{fill:#E2E8ED}
+.axis{stroke:#98A5AF;stroke-width:1;fill:none}
+.grid{stroke:#29353F;stroke-width:1;fill:none}
+.ch-main{fill:#EDA24E;fill-opacity:.16;stroke:#EDA24E;stroke-width:2}
+.ch-other{fill:none;stroke:#98A5AF;stroke-width:1;stroke-dasharray:3 3;opacity:.75}
+.ch-jp{fill:none;stroke:#98A5AF;stroke-width:1;stroke-dasharray:1 3;opacity:.6}
+.f24{fill:#EDA24E}.f5{fill:#4CC1CD}.f6{fill:#AE95F3}
+.t24{fill:#EDA24E}.t5{fill:#4CC1CD}.t6{fill:#AE95F3}
+.mk{fill:#8DB4EE}.mk-ink{fill:#E2E8ED}
+.ray{stroke:#8DB4EE;stroke-width:2;fill:none;stroke-linecap:round}
+.ray.thin{stroke-width:1.3}
+.surf{stroke:#E2E8ED;stroke-width:3;fill:none}
+.hatch{stroke:#98A5AF;stroke-width:1;fill:none}
+.guide{stroke:#98A5AF;stroke-width:1;stroke-dasharray:3 3;fill:none}
+.medium{fill:#0E2A2E;stroke:none}
+.block{fill:#98A5AF;fill-opacity:.55;stroke:none}
+.block-soft{fill:#4CC1CD;fill-opacity:.22;stroke:#4CC1CD;stroke-width:1}
+.shadow{fill:#98A5AF;fill-opacity:.12;stroke:none}
+.wave{stroke:#4CC1CD;stroke-width:1.5;fill:none}
+.particle{fill:#E2E8ED}
+.lifeline{stroke:#29353F;stroke-width:2;stroke-dasharray:5 4;fill:none}
+.actor{fill:#1C2630;stroke:#29353F;stroke-width:1}
+.msg{stroke:#E2E8ED;stroke-width:1.8;fill:none}
+.msg.wired{stroke:#98A5AF;stroke-dasharray:5 4}
+.note{fill:#1C2630;stroke:none}
+.pre{fill:#1A2A3E;stroke:none}
+.done{fill:#13281C;stroke:none}
+.dfs{fill:url(#dfs-hatch)}
+.hatch-line{stroke:#141C23;stroke-width:1.6}
+.kb{fill:#1C2630;stroke:none}
+.kb-acc{fill:#1A2A3E;stroke:none}
+.kb-gtk{fill:#0E2A2E;stroke:none}
+.kt-acc{fill:#8DB4EE}
+.kt-gtk{fill:#4CC1CD}
+.kline{stroke:#98A5AF;stroke-width:1.5;fill:none}
+.wired-zone{fill:#1C2630;stroke:none}
+.halo{paint-order:stroke;stroke:#141C23;stroke-width:5px;stroke-linejoin:round}
+.relay{fill:#141C23;stroke:#E2E8ED;stroke-width:1.5}
+.fld{fill:#1C2630;stroke:#29353F;stroke-width:1}
+.fld-opt{fill:#141C23;stroke:#98A5AF;stroke-width:1;stroke-dasharray:3 3}
+.fld-hi{fill:#1A2A3E;stroke:#8DB4EE;stroke-width:1}
+.busy{fill:#98A5AF;fill-opacity:.35;stroke:none}
+.ifs{fill:#141C23;stroke:#98A5AF;stroke-width:1;stroke-dasharray:2 2}
+.tx-a{fill:#8DB4EE;stroke:none}
+.tx-b{fill:#4CC1CD;stroke:none}
+.on-fill{fill:#141C23}
+.ackbox{fill:#141C23;stroke:#E2E8ED;stroke-width:1.5}
+.slot{fill:#141C23;stroke:#98A5AF;stroke-width:1}
+.frozen{fill:#98A5AF;fill-opacity:.12;stroke:#98A5AF;stroke-width:1;stroke-dasharray:4 3}
+.nav{fill:#AE95F3;fill-opacity:.2;stroke:#AE95F3;stroke-width:1}
+.t-nav{fill:#AE95F3}
+.range-a{fill:#8DB4EE;fill-opacity:.07;stroke:#8DB4EE;stroke-width:1.2;stroke-dasharray:5 4}
+.range-b{fill:#4CC1CD;fill-opacity:.07;stroke:#4CC1CD;stroke-width:1.2;stroke-dasharray:5 4}
+.t-acc{fill:#8DB4EE}
+.dev{fill:#141C23;stroke:#E2E8ED;stroke-width:1.5}
+.warn-f{fill:#EE9467}
+.warn-s{stroke:#EE9467;stroke-width:1.5;fill:none;stroke-dasharray:4 4}
+.t-warn{fill:#EE9467}
+.row-line{stroke:#29353F;stroke-width:1;fill:none}
+}</style>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="mk"/></marker>
+<marker id="arr-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="mk-ink"/></marker>
+<pattern id="dfs-hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" class="f5"/><line x1="0" y1="0" x2="0" y2="5" class="hatch-line"/></pattern>
+</defs>
+<rect class="bg" x="0.5" y="0.5" width="743" height="235" rx="10"/>
+<g transform="translate(12,12)">
+<rect x="51.0" y="30" width="53.7" height="44" rx="3" class="fld-hi"/>
+<text x="77.8" y="50.0" text-anchor="middle" font-size="11">Frame</text>
+<text x="77.8" y="64.0" text-anchor="middle" font-size="11">Control</text>
+<text x="77.8" y="90" text-anchor="middle" font-size="11" class="t-mono t-muted">2</text>
+<rect x="106.7" y="30" width="53.7" height="44" rx="3" class="fld"/>
+<text x="133.5" y="50.0" text-anchor="middle" font-size="11">Duration</text>
+<text x="133.5" y="64.0" text-anchor="middle" font-size="11">/ ID</text>
+<text x="133.5" y="90" text-anchor="middle" font-size="11" class="t-mono t-muted">2</text>
+<rect x="162.3" y="30" width="57.5" height="44" rx="3" class="fld"/>
+<text x="191.1" y="50.0" text-anchor="middle" font-size="11">Address</text>
+<text x="191.1" y="64.0" text-anchor="middle" font-size="11">1</text>
+<text x="191.1" y="90" text-anchor="middle" font-size="11" class="t-mono t-muted">6</text>
+<rect x="221.9" y="30" width="57.5" height="44" rx="3" class="fld"/>
+<text x="250.6" y="50.0" text-anchor="middle" font-size="11">Address</text>
+<text x="250.6" y="64.0" text-anchor="middle" font-size="11">2</text>
+<text x="250.6" y="90" text-anchor="middle" font-size="11" class="t-mono t-muted">6</text>
+<rect x="281.4" y="30" width="57.5" height="44" rx="3" class="fld"/>
+<text x="310.1" y="50.0" text-anchor="middle" font-size="11">Address</text>
+<text x="310.1" y="64.0" text-anchor="middle" font-size="11">3</text>
+<text x="310.1" y="90" text-anchor="middle" font-size="11" class="t-mono t-muted">6</text>
+<rect x="340.9" y="30" width="57.5" height="44" rx="3" class="fld"/>
+<text x="369.6" y="50.0" text-anchor="middle" font-size="11">Sequence</text>
+<text x="369.6" y="64.0" text-anchor="middle" font-size="11">Control</text>
+<text x="369.6" y="90" text-anchor="middle" font-size="11" class="t-mono t-muted">2</text>
+<rect x="400.4" y="30" width="57.5" height="44" rx="3" class="fld-opt"/>
+<text x="429.2" y="50.0" text-anchor="middle" font-size="11">Address</text>
+<text x="429.2" y="64.0" text-anchor="middle" font-size="11">4</text>
+<text x="429.2" y="90" text-anchor="middle" font-size="11" class="t-mono t-muted">6</text>
+<rect x="459.9" y="30" width="53.7" height="44" rx="3" class="fld-opt"/>
+<text x="486.7" y="50.0" text-anchor="middle" font-size="11">QoS</text>
+<text x="486.7" y="64.0" text-anchor="middle" font-size="11">Control</text>
+<text x="486.7" y="90" text-anchor="middle" font-size="11" class="t-mono t-muted">2</text>
+<rect x="515.6" y="30" width="53.7" height="44" rx="3" class="fld-opt"/>
+<text x="542.4" y="50.0" text-anchor="middle" font-size="11">HT</text>
+<text x="542.4" y="64.0" text-anchor="middle" font-size="11">Control</text>
+<text x="542.4" y="90" text-anchor="middle" font-size="11" class="t-mono t-muted">4</text>
+<rect x="571.3" y="30" width="103.6" height="44" rx="3" class="fld"/>
+<text x="623.1" y="56.0" text-anchor="middle" font-size="11">Frame body</text>
+<text x="623.1" y="90" text-anchor="middle" font-size="11" class="t-mono t-muted">0–n</text>
+<rect x="676.8" y="30" width="42.2" height="44" rx="3" class="fld"/>
+<text x="697.9" y="56.0" text-anchor="middle" font-size="11">FCS</text>
+<text x="697.9" y="90" text-anchor="middle" font-size="11" class="t-mono t-muted">4</text>
+<text x="0.0" y="90" text-anchor="start" font-size="11" class="t-muted">bytes</text>
+<path d="M53.0 25 V19 H567.3 V25" class="grid"/>
+<text x="310.1" y="13" text-anchor="middle" font-size="11" class="t-muted">MAC header · 24 bytes, up to 36 with optional fields</text>
+<path d="M573.3 25 V19 H672.8 V25" class="grid"/>
+<text x="623.1" y="13" text-anchor="middle" font-size="11" class="t-muted">payload</text>
+<path d="M678.8 25 V19 H717.0 V25" class="grid"/>
+<text x="697.9" y="13" text-anchor="middle" font-size="11" class="t-muted">CRC-32</text>
+<rect x="50.0" y="104" width="18.0" height="12" rx="2" class="fld-opt"/>
+<text x="74.0" y="114" text-anchor="start" font-size="11" class="t-muted">only in some frames (4-address WDS/mesh, QoS data, HT and later)</text>
+<path d="M51.0 74 L50 146 M104.7 74 L720 146" class="grid" stroke-dasharray="3 3"/>
+<rect x="51.0" y="150" width="81.8" height="40" rx="3" class="fld"/>
+<text x="91.9" y="168.0" text-anchor="middle" font-size="10.5">Protocol</text>
+<text x="91.9" y="182.0" text-anchor="middle" font-size="10.5">version</text>
+<text x="91.9" y="206" text-anchor="middle" font-size="11" class="t-mono t-muted">2</text>
+<rect x="134.8" y="150" width="81.8" height="40" rx="3" class="fld-hi"/>
+<text x="175.6" y="174.0" text-anchor="middle" font-size="10.5">Type</text>
+<text x="175.6" y="206" text-anchor="middle" font-size="11" class="t-mono t-muted">2</text>
+<rect x="218.5" y="150" width="165.5" height="40" rx="3" class="fld-hi"/>
+<text x="301.2" y="174.0" text-anchor="middle" font-size="10.5">Subtype</text>
+<text x="301.2" y="206" text-anchor="middle" font-size="11" class="t-mono t-muted">4</text>
+<rect x="386.0" y="150" width="39.9" height="40" rx="3" class="fld-hi"/>
+<text x="405.9" y="168.0" text-anchor="middle" font-size="10.5">To</text>
+<text x="405.9" y="182.0" text-anchor="middle" font-size="10.5">DS</text>
+<text x="405.9" y="206" text-anchor="middle" font-size="11" class="t-mono t-muted">1</text>
+<rect x="427.9" y="150" width="39.9" height="40" rx="3" class="fld-hi"/>
+<text x="447.8" y="168.0" text-anchor="middle" font-size="10.5">From</text>
+<text x="447.8" y="182.0" text-anchor="middle" font-size="10.5">DS</text>
+<text x="447.8" y="206" text-anchor="middle" font-size="11" class="t-mono t-muted">1</text>
+<rect x="469.8" y="150" width="39.9" height="40" rx="3" class="fld"/>
+<text x="489.7" y="168.0" text-anchor="middle" font-size="10.5">More</text>
+<text x="489.7" y="182.0" text-anchor="middle" font-size="10.5">Frag</text>
+<text x="489.7" y="206" text-anchor="middle" font-size="11" class="t-mono t-muted">1</text>
+<rect x="511.6" y="150" width="39.9" height="40" rx="3" class="fld-hi"/>
+<text x="531.6" y="174.0" text-anchor="middle" font-size="10.5">Retry</text>
+<text x="531.6" y="206" text-anchor="middle" font-size="11" class="t-mono t-muted">1</text>
+<rect x="553.5" y="150" width="39.9" height="40" rx="3" class="fld"/>
+<text x="573.4" y="168.0" text-anchor="middle" font-size="10.5">Pwr</text>
+<text x="573.4" y="182.0" text-anchor="middle" font-size="10.5">Mgmt</text>
+<text x="573.4" y="206" text-anchor="middle" font-size="11" class="t-mono t-muted">1</text>
+<rect x="595.4" y="150" width="39.9" height="40" rx="3" class="fld"/>
+<text x="615.3" y="168.0" text-anchor="middle" font-size="10.5">More</text>
+<text x="615.3" y="182.0" text-anchor="middle" font-size="10.5">Data</text>
+<text x="615.3" y="206" text-anchor="middle" font-size="11" class="t-mono t-muted">1</text>
+<rect x="637.2" y="150" width="39.9" height="40" rx="3" class="fld-hi"/>
+<text x="657.2" y="168.0" text-anchor="middle" font-size="10.5">Prot.</text>
+<text x="657.2" y="182.0" text-anchor="middle" font-size="10.5">Frame</text>
+<text x="657.2" y="206" text-anchor="middle" font-size="11" class="t-mono t-muted">1</text>
+<rect x="679.1" y="150" width="39.9" height="40" rx="3" class="fld"/>
+<text x="699.1" y="168.0" text-anchor="middle" font-size="10.5">+HTC</text>
+<text x="699.1" y="182.0" text-anchor="middle" font-size="10.5">/Order</text>
+<text x="699.1" y="206" text-anchor="middle" font-size="11" class="t-mono t-muted">1</text>
+<text x="0.0" y="206" text-anchor="start" font-size="11" class="t-muted">bits</text>
+<text x="0.0" y="174" text-anchor="start" font-size="11" class="t-muted">Frame</text>
+<text x="0.0" y="188" text-anchor="start" font-size="11" class="t-muted">Control</text>
+</g>
+</svg>

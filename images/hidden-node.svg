@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 744 406" width="744" height="406" role="img" aria-label="802.11r key hierarchy: XXKey from 802.1X, PSK or SAE produces PMK-R0 on the controller, which produces a PMK-R1 for each AP, which produces the PTK.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 744 270" width="744" height="270" role="img" aria-label="Hidden node problem: clients A and B are each in range of the AP but not of each other, so their transmissions collide at the AP.">
 <style>
 .bg{fill:#FFFFFF;stroke:#D3DBE1;stroke-width:1}
 text{font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;fill:#15212B}
@@ -134,37 +134,26 @@ text{font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Helvetica,Ar
 <marker id="arr-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="mk-ink"/></marker>
 <pattern id="dfs-hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" class="f5"/><line x1="0" y1="0" x2="0" y2="5" class="hatch-line"/></pattern>
 </defs>
-<rect class="bg" x="0.5" y="0.5" width="743" height="405" rx="10"/>
+<rect class="bg" x="0.5" y="0.5" width="743" height="269" rx="10"/>
 <g transform="translate(12,12)">
-<rect x="10" y="0" width="220" height="72" rx="7" class="kb"/>
-<text x="120.0" y="20" text-anchor="middle" font-size="13" font-weight="600" class="t-mono">FT-802.1X</text>
-<text x="120.0" y="38" text-anchor="middle" font-size="12" class="t-muted">XXKey = second 256 bits</text>
-<text x="120.0" y="54" text-anchor="middle" font-size="12" class="t-muted">of the EAP MSK</text>
-<line x1="120" y1="72" x2="350" y2="94" class="kline"/>
-<rect x="250" y="0" width="220" height="72" rx="7" class="kb"/>
-<text x="360.0" y="20" text-anchor="middle" font-size="13" font-weight="600" class="t-mono">FT-PSK</text>
-<text x="360.0" y="38" text-anchor="middle" font-size="12" class="t-muted">XXKey = the PSK</text>
-<text x="360.0" y="54" text-anchor="middle" font-size="12" class="t-muted">(from the passphrase)</text>
-<line x1="360" y1="72" x2="350" y2="94" class="kline"/>
-<rect x="490" y="0" width="220" height="72" rx="7" class="kb"/>
-<text x="600.0" y="20" text-anchor="middle" font-size="13" font-weight="600" class="t-mono">FT-SAE</text>
-<text x="600.0" y="38" text-anchor="middle" font-size="12" class="t-muted">XXKey = the PMK from</text>
-<text x="600.0" y="54" text-anchor="middle" font-size="12" class="t-muted">the SAE exchange</text>
-<line x1="600" y1="72" x2="350" y2="94" class="kline"/>
-<line x1="350" y1="94" x2="350" y2="138" class="kline" marker-end="url(#arr-ink)"/>
-<text x="362" y="122" font-size="11.5" class="t-mono t-muted">KDF(XXKey, SSID, MDID, R0KH-ID, client MAC)</text>
-<rect x="120" y="140" width="460" height="50" rx="7" class="kb-acc"/>
-<text x="350.0" y="160" text-anchor="middle" font-size="13" font-weight="600" class="t-mono kt-acc">PMK-R0</text>
-<text x="350.0" y="178" text-anchor="middle" font-size="12" class="t-muted">held by the controller (R0KH) · one per client per mobility domain</text>
-<line x1="350" y1="190" x2="350" y2="234" class="kline" marker-end="url(#arr-ink)"/>
-<text x="362" y="216" font-size="11.5" class="t-mono t-muted">KDF(PMK-R0, R1KH-ID, client MAC)</text>
-<rect x="120" y="236" width="460" height="50" rx="7" class="kb-acc"/>
-<text x="350.0" y="256" text-anchor="middle" font-size="13" font-weight="600" class="t-mono kt-acc">PMK-R1</text>
-<text x="350.0" y="274" text-anchor="middle" font-size="12" class="t-muted">held by each AP (R1KH) · a different one per AP</text>
-<line x1="350" y1="286" x2="350" y2="330" class="kline" marker-end="url(#arr-ink)"/>
-<text x="362" y="312" font-size="11.5" class="t-mono t-muted">KDF(PMK-R1, ANonce, SNonce, BSSID, client MAC)</text>
-<rect x="120" y="332" width="460" height="50" rx="7" class="kb-acc"/>
-<text x="350.0" y="352" text-anchor="middle" font-size="13" font-weight="600" class="t-mono kt-acc">PTK</text>
-<text x="350.0" y="370" text-anchor="middle" font-size="12" class="t-muted">same KCK / KEK / TK split · fresh every association</text>
+<ellipse cx="190" cy="120" rx="190" ry="90" class="range-a"/>
+<ellipse cx="530" cy="120" rx="190" ry="90" class="range-b"/>
+<text x="190.0" y="22" text-anchor="middle" font-size="12" class="t-acc" font-weight="600">A’s range</text>
+<text x="530.0" y="22" text-anchor="middle" font-size="12" class="t5" font-weight="600">B’s range</text>
+<circle cx="190" cy="120" r="16" class="dev"/>
+<rect x="344.0" y="106" width="32.0" height="28" rx="5" class="dev"/>
+<circle cx="530" cy="120" r="16" class="dev"/>
+<text x="190.0" y="156" text-anchor="middle" font-size="12.5" font-weight="600">Client A</text>
+<text x="360.0" y="156" text-anchor="middle" font-size="12.5" font-weight="600">AP</text>
+<text x="530.0" y="156" text-anchor="middle" font-size="12.5" font-weight="600">Client B</text>
+<line x1="208" y1="120" x2="338" y2="120" class="msg" marker-end="url(#arr-ink)"/>
+<text x="273.0" y="112" text-anchor="middle" font-size="11.5" class="t-mono" font-weight="600">DATA</text>
+<line x1="512" y1="120" x2="382" y2="120" class="msg" marker-end="url(#arr-ink)"/>
+<text x="447.0" y="112" text-anchor="middle" font-size="11.5" class="t-mono" font-weight="600">DATA</text>
+<polygon points="374.0,86.0 365.5,88.3 369.9,95.9 362.3,91.5 360.0,100.0 357.7,91.5 350.1,95.9 354.5,88.3 346.0,86.0 354.5,83.7 350.1,76.1 357.7,80.5 360.0,72.0 362.3,80.5 369.9,76.1 365.5,83.7" class="warn-f"/>
+<text x="380.0" y="90" text-anchor="start" font-size="12.5" class="t-warn" font-weight="600">collision at the AP</text>
+<line x1="190" y1="190" x2="530" y2="190" class="warn-s"/>
+<text x="360.0" y="195" text-anchor="middle" font-size="14" class="t-warn" font-weight="700">✕</text>
+<text x="360.0" y="236" text-anchor="middle" font-size="12" class="t-muted">A and B can’t hear each other, so carrier sense can’t stop them transmitting together</text>
 </g>
 </svg>

@@ -43,6 +43,27 @@ text{font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Helvetica,Ar
 .wired-zone{fill:#EAEFF3;stroke:none}
 .halo{paint-order:stroke;stroke:#FFFFFF;stroke-width:5px;stroke-linejoin:round}
 .relay{fill:#FFFFFF;stroke:#15212B;stroke-width:1.5}
+.fld{fill:#EAEFF3;stroke:#D3DBE1;stroke-width:1}
+.fld-opt{fill:#FFFFFF;stroke:#56646F;stroke-width:1;stroke-dasharray:3 3}
+.fld-hi{fill:#E2EBF7;stroke:#1E4E8C;stroke-width:1}
+.busy{fill:#56646F;fill-opacity:.35;stroke:none}
+.ifs{fill:#FFFFFF;stroke:#56646F;stroke-width:1;stroke-dasharray:2 2}
+.tx-a{fill:#1E4E8C;stroke:none}
+.tx-b{fill:#0A7381;stroke:none}
+.on-fill{fill:#FFFFFF}
+.ackbox{fill:#FFFFFF;stroke:#15212B;stroke-width:1.5}
+.slot{fill:#FFFFFF;stroke:#56646F;stroke-width:1}
+.frozen{fill:#56646F;fill-opacity:.12;stroke:#56646F;stroke-width:1;stroke-dasharray:4 3}
+.nav{fill:#6947BF;fill-opacity:.2;stroke:#6947BF;stroke-width:1}
+.t-nav{fill:#6947BF}
+.range-a{fill:#1E4E8C;fill-opacity:.07;stroke:#1E4E8C;stroke-width:1.2;stroke-dasharray:5 4}
+.range-b{fill:#0A7381;fill-opacity:.07;stroke:#0A7381;stroke-width:1.2;stroke-dasharray:5 4}
+.t-acc{fill:#1E4E8C}
+.dev{fill:#FFFFFF;stroke:#15212B;stroke-width:1.5}
+.warn-f{fill:#A0441A}
+.warn-s{stroke:#A0441A;stroke-width:1.5;fill:none;stroke-dasharray:4 4}
+.t-warn{fill:#A0441A}
+.row-line{stroke:#D3DBE1;stroke-width:1;fill:none}
 @media (prefers-color-scheme: dark){
 .bg{fill:#141C23;stroke:#29353F;stroke-width:1}
 text{font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;fill:#E2E8ED}
@@ -86,6 +107,27 @@ text{font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Helvetica,Ar
 .wired-zone{fill:#1C2630;stroke:none}
 .halo{paint-order:stroke;stroke:#141C23;stroke-width:5px;stroke-linejoin:round}
 .relay{fill:#141C23;stroke:#E2E8ED;stroke-width:1.5}
+.fld{fill:#1C2630;stroke:#29353F;stroke-width:1}
+.fld-opt{fill:#141C23;stroke:#98A5AF;stroke-width:1;stroke-dasharray:3 3}
+.fld-hi{fill:#1A2A3E;stroke:#8DB4EE;stroke-width:1}
+.busy{fill:#98A5AF;fill-opacity:.35;stroke:none}
+.ifs{fill:#141C23;stroke:#98A5AF;stroke-width:1;stroke-dasharray:2 2}
+.tx-a{fill:#8DB4EE;stroke:none}
+.tx-b{fill:#4CC1CD;stroke:none}
+.on-fill{fill:#141C23}
+.ackbox{fill:#141C23;stroke:#E2E8ED;stroke-width:1.5}
+.slot{fill:#141C23;stroke:#98A5AF;stroke-width:1}
+.frozen{fill:#98A5AF;fill-opacity:.12;stroke:#98A5AF;stroke-width:1;stroke-dasharray:4 3}
+.nav{fill:#AE95F3;fill-opacity:.2;stroke:#AE95F3;stroke-width:1}
+.t-nav{fill:#AE95F3}
+.range-a{fill:#8DB4EE;fill-opacity:.07;stroke:#8DB4EE;stroke-width:1.2;stroke-dasharray:5 4}
+.range-b{fill:#4CC1CD;fill-opacity:.07;stroke:#4CC1CD;stroke-width:1.2;stroke-dasharray:5 4}
+.t-acc{fill:#8DB4EE}
+.dev{fill:#141C23;stroke:#E2E8ED;stroke-width:1.5}
+.warn-f{fill:#EE9467}
+.warn-s{stroke:#EE9467;stroke-width:1.5;fill:none;stroke-dasharray:4 4}
+.t-warn{fill:#EE9467}
+.row-line{stroke:#29353F;stroke-width:1;fill:none}
 }</style>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="mk"/></marker>
@@ -143,6 +185,6 @@ text{font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Helvetica,Ar
 
               <rect x="60" y="540" width="600" height="46" rx="6" class="done"/>
               <text x="360" y="559" text-anchor="middle" font-size="12.5">Both proved they know the password without revealing it · <tspan font-weight="600">PMK</tspan> is shared</text>
-              <text x="360" y="576" text-anchor="middle" font-size="12" class="t-muted">Next: Association Request/Response → 4-way handshake (section 3)</text>
+              <text x="360" y="576" text-anchor="middle" font-size="12" class="t-muted">Next: Association Request/Response → 4-way handshake (section 4)</text>
 </g>
 </svg>
