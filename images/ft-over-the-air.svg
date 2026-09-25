@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 744 534" width="744" height="534" role="img" aria-label="Sequence diagram of an 802.11r over-the-air fast roam between client, target AP and controller: four frames between client and target AP, with the target AP fetching PMK-R1 from the controller over the wired network.">
+<style>
+.bg{fill:#FFFFFF;stroke:#D3DBE1;stroke-width:1}
+text{font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;fill:#15212B}
+.t-mono{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.t-muted{fill:#56646F}
+.ink{fill:#15212B}
+.axis{stroke:#56646F;stroke-width:1;fill:none}
+.grid{stroke:#D3DBE1;stroke-width:1;fill:none}
+.ch-main{fill:#B25F08;fill-opacity:.16;stroke:#B25F08;stroke-width:2}
+.ch-other{fill:none;stroke:#56646F;stroke-width:1;stroke-dasharray:3 3;opacity:.75}
+.ch-jp{fill:none;stroke:#56646F;stroke-width:1;stroke-dasharray:1 3;opacity:.6}
+.f24{fill:#B25F08}.f5{fill:#0A7381}.f6{fill:#6947BF}
+.t24{fill:#B25F08}.t5{fill:#0A7381}.t6{fill:#6947BF}
+.mk{fill:#1E4E8C}.mk-ink{fill:#15212B}
+.ray{stroke:#1E4E8C;stroke-width:2;fill:none;stroke-linecap:round}
+.ray.thin{stroke-width:1.3}
+.surf{stroke:#15212B;stroke-width:3;fill:none}
+.hatch{stroke:#56646F;stroke-width:1;fill:none}
+.guide{stroke:#56646F;stroke-width:1;stroke-dasharray:3 3;fill:none}
+.medium{fill:#DAEFF1;stroke:none}
+.block{fill:#56646F;fill-opacity:.55;stroke:none}
+.block-soft{fill:#0A7381;fill-opacity:.22;stroke:#0A7381;stroke-width:1}
+.shadow{fill:#56646F;fill-opacity:.12;stroke:none}
+.wave{stroke:#0A7381;stroke-width:1.5;fill:none}
+.particle{fill:#15212B}
+.lifeline{stroke:#D3DBE1;stroke-width:2;stroke-dasharray:5 4;fill:none}
+.actor{fill:#EAEFF3;stroke:#D3DBE1;stroke-width:1}
+.msg{stroke:#15212B;stroke-width:1.8;fill:none}
+.msg.wired{stroke:#56646F;stroke-dasharray:5 4}
+.note{fill:#EAEFF3;stroke:none}
+.pre{fill:#E2EBF7;stroke:none}
+.done{fill:#DFF0E6;stroke:none}
+.dfs{fill:url(#dfs-hatch)}
+.hatch-line{stroke:#FFFFFF;stroke-width:1.6}
+.kb{fill:#EAEFF3;stroke:none}
+.kb-acc{fill:#E2EBF7;stroke:none}
+.kb-gtk{fill:#DAEFF1;stroke:none}
+.kt-acc{fill:#1E4E8C}
+.kt-gtk{fill:#0A7381}
+.kline{stroke:#56646F;stroke-width:1.5;fill:none}
+@media (prefers-color-scheme: dark){
+.bg{fill:#141C23;stroke:#29353F;stroke-width:1}
+text{font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;fill:#E2E8ED}
+.t-mono{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.t-muted{fill:#98A5AF}
+.ink{fill:#E2E8ED}
+.axis{stroke:#98A5AF;stroke-width:1;fill:none}
+.grid{stroke:#29353F;stroke-width:1;fill:none}
+.ch-main{fill:#EDA24E;fill-opacity:.16;stroke:#EDA24E;stroke-width:2}
+.ch-other{fill:none;stroke:#98A5AF;stroke-width:1;stroke-dasharray:3 3;opacity:.75}
+.ch-jp{fill:none;stroke:#98A5AF;stroke-width:1;stroke-dasharray:1 3;opacity:.6}
+.f24{fill:#EDA24E}.f5{fill:#4CC1CD}.f6{fill:#AE95F3}
+.t24{fill:#EDA24E}.t5{fill:#4CC1CD}.t6{fill:#AE95F3}
+.mk{fill:#8DB4EE}.mk-ink{fill:#E2E8ED}
+.ray{stroke:#8DB4EE;stroke-width:2;fill:none;stroke-linecap:round}
+.ray.thin{stroke-width:1.3}
+.surf{stroke:#E2E8ED;stroke-width:3;fill:none}
+.hatch{stroke:#98A5AF;stroke-width:1;fill:none}
+.guide{stroke:#98A5AF;stroke-width:1;stroke-dasharray:3 3;fill:none}
+.medium{fill:#0E2A2E;stroke:none}
+.block{fill:#98A5AF;fill-opacity:.55;stroke:none}
+.block-soft{fill:#4CC1CD;fill-opacity:.22;stroke:#4CC1CD;stroke-width:1}
+.shadow{fill:#98A5AF;fill-opacity:.12;stroke:none}
+.wave{stroke:#4CC1CD;stroke-width:1.5;fill:none}
+.particle{fill:#E2E8ED}
+.lifeline{stroke:#29353F;stroke-width:2;stroke-dasharray:5 4;fill:none}
+.actor{fill:#1C2630;stroke:#29353F;stroke-width:1}
+.msg{stroke:#E2E8ED;stroke-width:1.8;fill:none}
+.msg.wired{stroke:#98A5AF;stroke-dasharray:5 4}
+.note{fill:#1C2630;stroke:none}
+.pre{fill:#1A2A3E;stroke:none}
+.done{fill:#13281C;stroke:none}
+.dfs{fill:url(#dfs-hatch)}
+.hatch-line{stroke:#141C23;stroke-width:1.6}
+.kb{fill:#1C2630;stroke:none}
+.kb-acc{fill:#1A2A3E;stroke:none}
+.kb-gtk{fill:#0E2A2E;stroke:none}
+.kt-acc{fill:#8DB4EE}
+.kt-gtk{fill:#4CC1CD}
+.kline{stroke:#98A5AF;stroke-width:1.5;fill:none}
+}</style>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="mk"/></marker>
+<marker id="arr-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="mk-ink"/></marker>
+<pattern id="dfs-hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" class="f5"/><line x1="0" y1="0" x2="0" y2="5" class="hatch-line"/></pattern>
+</defs>
+<rect class="bg" x="0.5" y="0.5" width="743" height="533" rx="10"/>
+<g transform="translate(12,12)">
+<rect x="20" y="10" width="140" height="44" rx="6" class="actor"/>
+              <text x="90" y="30" text-anchor="middle" font-size="14" font-weight="600">Client</text>
+              <text x="90" y="46" text-anchor="middle" font-size="11.5" class="t-muted">Supplicant</text>
+              <rect x="350" y="10" width="160" height="44" rx="6" class="actor"/>
+              <text x="430" y="30" text-anchor="middle" font-size="14" font-weight="600">Target AP</text>
+              <text x="430" y="46" text-anchor="middle" font-size="11.5" class="t-muted">R1 key holder</text>
+              <rect x="560" y="10" width="140" height="44" rx="6" class="actor"/>
+              <text x="630" y="30" text-anchor="middle" font-size="14" font-weight="600">Controller</text>
+              <text x="630" y="46" text-anchor="middle" font-size="11.5" class="t-muted">R0 key holder</text>
+              <line x1="90" y1="54" x2="90" y2="462" class="lifeline"/>
+              <line x1="430" y1="54" x2="430" y2="462" class="lifeline"/>
+              <line x1="630" y1="54" x2="630" y2="462" class="lifeline"/>
+
+              <rect x="40" y="70" width="640" height="32" rx="6" class="pre"/>
+              <text x="360" y="91" text-anchor="middle" font-size="12.5">Already connected to another AP in this mobility domain · controller holds <tspan font-weight="600">PMK-R0</tspan></text>
+
+              <!-- 1 -->
+              <text x="260" y="130" text-anchor="middle" font-size="13" class="t-mono" font-weight="600">① Authentication Request (FT)</text>
+              <text x="260" y="145" text-anchor="middle" font-size="11" class="t-mono t-muted">MDE · FTE[SNonce, R0KH-ID] · RSNE[PMKR0Name]</text>
+              <line x1="92" y1="154" x2="426" y2="154" class="msg" marker-end="url(#arr-ink)"/>
+
+              <!-- wired fetch -->
+              <text x="530" y="174" text-anchor="middle" font-size="11.5" class="t-muted">request PMK-R1</text>
+              <line x1="432" y1="182" x2="626" y2="182" class="msg wired" marker-end="url(#arr-ink)"/>
+              <text x="530" y="208" text-anchor="middle" font-size="11.5" class="t-muted">PMK-R1 for this AP</text>
+              <line x1="628" y1="216" x2="434" y2="216" class="msg wired" marker-end="url(#arr-ink)"/>
+              <text x="530" y="236" text-anchor="middle" font-size="11" class="t-muted">wired · skipped if pre-pushed</text>
+
+              <!-- 2 -->
+              <text x="260" y="262" text-anchor="middle" font-size="13" class="t-mono" font-weight="600">② Authentication Response (FT)</text>
+              <text x="260" y="277" text-anchor="middle" font-size="11" class="t-mono t-muted">FTE[ANonce, SNonce, R1KH-ID]</text>
+              <line x1="428" y1="286" x2="94" y2="286" class="msg" marker-end="url(#arr-ink)"/>
+              <rect x="100" y="296" width="230" height="26" rx="5" class="note"/>
+              <text x="112" y="313" font-size="12" class="t-muted">Derives PMK-R1 → <tspan font-weight="600" class="t-mono ink">PTK</tspan></text>
+              <rect x="440" y="296" width="180" height="26" rx="5" class="note"/>
+              <text x="452" y="313" font-size="12" class="t-muted">Derives the same <tspan font-weight="600" class="t-mono ink">PTK</tspan></text>
+
+              <!-- 3 -->
+              <text x="260" y="350" text-anchor="middle" font-size="13" class="t-mono" font-weight="600">③ Reassociation Request</text>
+              <text x="260" y="365" text-anchor="middle" font-size="11" class="t-mono t-muted">RSNE[PMKR1Name] · MDE · FTE[MIC]</text>
+              <line x1="92" y1="374" x2="426" y2="374" class="msg" marker-end="url(#arr-ink)"/>
+
+              <!-- 4 -->
+              <text x="260" y="416" text-anchor="middle" font-size="13" class="t-mono" font-weight="600">④ Reassociation Response</text>
+              <text x="260" y="431" text-anchor="middle" font-size="11" class="t-mono t-muted">RSNE · MDE · FTE[MIC, GTK encrypted with KEK]</text>
+              <line x1="428" y1="440" x2="94" y2="440" class="msg" marker-end="url(#arr-ink)"/>
+
+              <rect x="40" y="462" width="640" height="34" rx="6" class="done"/>
+              <text x="360" y="484" text-anchor="middle" font-size="12.5">Keys installed — data flows. No EAP, no separate 4-way handshake.</text>
+</g>
+</svg>
